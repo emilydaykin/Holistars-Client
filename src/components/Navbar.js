@@ -10,7 +10,7 @@ const Navbar = () => {
             Home
           </Link>
           <Link className='header__nav-item' to={'/cities'}>
-            Cities
+            Destinations
           </Link>
         </div>
         <div className='header__nav-right'>

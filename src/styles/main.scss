@@ -1,9 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Handlee&family=Poppins:wght@100;200;400;500;600;700&display=swap');
+@import './home.scss';
+@import './navbar.scss';
+@import './cities.scss';
 
 body {
   box-sizing: border-box;
   margin: 0;
   font-family: 'Poppins', sans-serif;
+}
+
+h1 {
+  margin: 0;
 }
 
 .button {
@@ -22,5 +29,11 @@ body {
   }
 }
 
-@import './home.scss';
-@import './navbar.scss';
+.input {
+  font-family: inherit;
+  width: 450px;
+  padding: 1em 1.5em;
+  border-radius: 10px;
+  border: 2px solid #000;
+}
+
