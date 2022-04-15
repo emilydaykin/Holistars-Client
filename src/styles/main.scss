@@ -6,5 +6,21 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
+.button {
+  color: purple;
+  background-color: #e8ffff;
+  border: 3px solid #000;
+  padding: 0.8em 1.2em;
+  border-radius: 10px;
+  transition: 0.2s ease-in-out;
+
+  &:hover {
+    background-color: purple;
+    color: #e8ffff;
+    border: 3px solid #e8ffff;
+    transform: scale(1.2);
+  }
+}
+
 @import './home.scss';
 @import './navbar.scss';

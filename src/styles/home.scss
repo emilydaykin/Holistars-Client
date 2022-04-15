@@ -36,10 +36,15 @@
     letter-spacing: 0.13rem;
   }
 
+  &__button {
+    text-decoration: none;
+    margin-top: 1em;
+    margin-bottom: 0;
+  }
+
   &__destinations {
-    margin: 2.5em;
+    margin: 3em 2.75em;
     padding: 0 20px;
-    margin-top: 35px;
   }
 
   &__heading {
@@ -71,7 +76,6 @@
   &__carousel-link {
     text-decoration: none;
     color: #fff;
-    
   }
   
   &__carousel-text {

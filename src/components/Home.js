@@ -515,6 +515,9 @@ const Home = () => {
         <div className='home__text'>
           <h1 className='home__title'>Holistars</h1>
           <p className='home__subtitle'>The Social Media Hub for Travellers</p>
+          <Link to={'/cities'} className='button home__button'>
+            Browse All Destinations
+          </Link>
         </div>
       </div>
       <div className='home__destinations'>
