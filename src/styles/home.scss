@@ -1,0 +1,95 @@
+.home {
+
+  &__hero {
+    color: #fff;
+    
+    & img, div {
+      padding-top: 1em;
+    }
+  }
+
+  &__hero-logo {
+    width: 250px;
+  }
+
+  &__text {
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 1.25em;
+  }
+
+  &__title {
+    margin: 0;
+    letter-spacing: 0.5rem;
+    font-family: 'Handlee', cursive;
+    font-size: 4rem;
+    font-weight: bold;
+    text-transform: uppercase;
+
+  }
+
+  &__subtitle {
+    margin: 0;
+    letter-spacing: 0.13rem;
+  }
+
+  &__destinations {
+    margin: 2.5em;
+    padding: 0 20px;
+    margin-top: 35px;
+  }
+
+  &__heading {
+    letter-spacing: 0.07rem;
+    font-weight: 400;
+    margin: 0;
+    margin-bottom: 0.58em;
+  }
+
+  &__carousel-item {
+    padding: 0 1.25em;
+    position: relative;
+    
+    img {
+      height: 25vh;
+      width: 25vw;
+      min-width: 150px;
+      border: 4px solid #000;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 13px;
+      
+      &:hover {
+        border: 4px solid grey;
+      }
+    }
+  }
+
+  &__carousel-link {
+    text-decoration: none;
+    color: #fff;
+    
+  }
+  
+  &__carousel-text {
+    background-color: rgba(0, 0, 0, 0.507);
+    position: absolute;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    bottom: 2%;
+    left: 5%;
+    padding: 0.12em 0.55em;
+    border-bottom-left-radius: 0.55em;
+    border-top-right-radius: 0.55em;
+  }
+}
+
+// React-slick classes
+.slick-prev:before,
+.slick-next:before {
+  color: #000;
+}
