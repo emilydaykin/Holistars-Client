@@ -1,8 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { getAllCities, searchCities } from '../api/cities_api';
 
 const Cities = ({ shuffledCities }) => {
-  const [cities, setCities] = useState(shuffledCities);
+  // const [cities, setCities] = useState(shuffledCities);
+  const [cities, setCities] = useState(null);
   const [searchInput, setSearchInput] = useState('');
+
+  useEffect(() => {
+    const getCityData = async () => {
+      const allCities = await getAllCities();
+      setCities(allCities);
+    };
+    getCityData();
+  }, []);
+
+  console.log('cities', cities);
 
   const continentColorCodes = {
     Asia: 'Indigo',
@@ -13,10 +25,17 @@ const Cities = ({ shuffledCities }) => {
     'South America': 'SaddleBrown'
   };
 
+  const filterCities = async () => {
+    const filteredCities = await searchCities(searchInput);
+    setCities(filteredCities);
+  };
+
   const handleSearchChange = (e) => {
     console.log('search', e.target.value);
     setSearchInput(e.target.value);
+    filterCities();
   };
+
   console.log(searchInput);
 
   return (
@@ -30,33 +49,37 @@ const Cities = ({ shuffledCities }) => {
         value={searchInput}
       ></input>
       <div className='cities__container'>
-        {cities.map((city) => (
-          <div className='cities__city-card' key={city.pk}>
-            <div
-              className='cities__city-image'
-              style={{
-                backgroundImage: `url(${city.fields.image})`,
-                backgroundSize: 'cover'
-              }}
-            ></div>
-            <div className='cities__city-text'>
-              <p className='cities__city-name'>{city.fields.city}</p>
-              <p>
-                <span className='cities__country-name'>{city.fields.country}</span>
-                ,&ensp;
-                <span
-                  style={{
-                    color: continentColorCodes[city.fields.continent],
-                    fontWeight: 300,
-                    fontSize: '1.25rem'
-                  }}
-                >
-                  {city.fields.continent}
-                </span>
-              </p>
+        {!cities ? (
+          <p>Loading cities...</p>
+        ) : (
+          cities.map((city) => (
+            <div className='cities__city-card' key={city.id}>
+              <div
+                className='cities__city-image'
+                style={{
+                  backgroundImage: `url(${city.image})`,
+                  backgroundSize: 'cover'
+                }}
+              ></div>
+              <div className='cities__city-text'>
+                <p className='cities__city-name'>{city.city}</p>
+                <p>
+                  <span className='cities__country-name'>{city.country}</span>
+                  ,&ensp;
+                  <span
+                    style={{
+                      color: continentColorCodes[city.continent],
+                      fontWeight: 300,
+                      fontSize: '1.25rem'
+                    }}
+                  >
+                    {city.continent}
+                  </span>
+                </p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))
+        )}
       </div>
     </section>
   );
