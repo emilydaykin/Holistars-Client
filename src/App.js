@@ -484,7 +484,7 @@ const App = () => {
 
   const shuffledDestinations = mockData.sort(() => 0.5 - Math.random());
 
-  console.log('shuffledDestinations', shuffledDestinations);
+  // console.log('shuffledDestinations', shuffledDestinations);
 
   return (
     <BrowserRouter>

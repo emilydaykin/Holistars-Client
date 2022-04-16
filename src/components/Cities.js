@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Cities = ({ shuffledCities }) => {
-  console.log('shuffledDestinations', shuffledCities);
+  const [cities, setCities] = useState(shuffledCities);
+  const [searchInput, setSearchInput] = useState('');
 
   const continentColorCodes = {
     Asia: 'Indigo',
@@ -12,6 +13,12 @@ const Cities = ({ shuffledCities }) => {
     'South America': 'SaddleBrown'
   };
 
+  const handleSearchChange = (e) => {
+    console.log('search', e.target.value);
+    setSearchInput(e.target.value);
+  };
+  console.log(searchInput);
+
   return (
     <section className='cities'>
       <h1 className='cities__title'>Destinations</h1>
@@ -19,9 +26,11 @@ const Cities = ({ shuffledCities }) => {
         className='input cities__search-bar'
         type='text'
         placeholder='Search city, country, continent, or recommended attractions...'
+        onChange={handleSearchChange}
+        value={searchInput}
       ></input>
       <div className='cities__container'>
-        {shuffledCities.map((city) => (
+        {cities.map((city) => (
           <div className='cities__city-card' key={city.pk}>
             <div
               className='cities__city-image'

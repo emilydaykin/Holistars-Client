@@ -7,21 +7,19 @@
   &__title {
     padding-top: 2em;
     padding-left: 1em;
-    // font-weight: 3rem;
     font-size: 2.5rem;
     font-weight: 600;
     letter-spacing: 0.05em;
-    // border: 2px solid orange;
   }
 
   &__search-bar {
     margin: 1em;
     margin-top: 0.25em;
     align-self: center;
+    color: purple;
   }
 
   &__container {
-    // border: 2px solid blue;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -52,7 +50,6 @@
   }
 
   &__city-text {
-    // border: 2px solid red;
     display: flex;
     padding: 1em;
     flex-direction: column;
