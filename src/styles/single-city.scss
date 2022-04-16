@@ -1,0 +1,28 @@
+.singleCity {
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+
+  &__geography {
+    display: flex;
+    flex-direction: column;
+    padding-top: 4em;
+    padding-left: 2em;
+  }
+
+  &__title {
+    color: #fff;
+    letter-spacing: 0.2em;
+    font-size: 4em;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'Handlee';
+  }
+
+  &__subtitle {
+    display: flex;
+    color: #fff;
+  }
+
+  
+}

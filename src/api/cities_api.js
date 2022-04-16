@@ -19,3 +19,13 @@ export const searchCities = async (search_term) => {
   const { data } = await axios.request(options);
   return data;
 };
+
+export const getCityById = async (id) => {
+  const options = {
+    method: 'GET',
+    url: `/cities/${id}`
+  };
+
+  const { data } = await axios.request(options);
+  return data;
+};
