@@ -1,4 +1,4 @@
-.header {
+.header, .header--custom {
   background-color: rgba(0, 0, 0, 0.45);
   position: fixed;
   width: 100%;
@@ -16,4 +16,8 @@
     margin: 1.25em 0.6em;
     
   }
+}
+
+.header--custom {
+  background-color: rgba(0, 0, 0, 0);
 }

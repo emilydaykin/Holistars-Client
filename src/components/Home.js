@@ -12,7 +12,8 @@ const Home = ({ shuffledCities }) => {
   const destinationSubset = shuffledCities.slice(0, 10);
 
   const heroStyles = {
-    backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${randomHeroImage})`,
+    backgroundImage: `linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.45)), url(${randomHeroImage})`,
+    boxShadow: '0px 8px 25px 7px rgba(180,180,180,0.7)',
     height: '60vh',
     backgroundPosition: 'center',
     backgroundSize: 'cover',
@@ -37,7 +38,7 @@ const Home = ({ shuffledCities }) => {
         <div className='home__text'>
           <h1 className='home__title'>Holistars</h1>
           <p className='home__subtitle'>The Social Media Hub for Travellers</p>
-          <Link to={'/cities'} className='button home__button'>
+          <Link to={'/destinations/'} className='button home__button'>
             Browse All Destinations
           </Link>
         </div>
