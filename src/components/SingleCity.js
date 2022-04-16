@@ -26,10 +26,35 @@ const SingleCity = () => {
       <div className='singleCity__geography'>
         <h1 className='singleCity__title'>{city.city}</h1>
         <div className='singleCity__subtitle'>
-          {city.state ? <p>{city.state}</p> : <p></p>}
+          {city.state ? <p>{city.state}&emsp;~&emsp;</p> : <p></p>}
           <p>{city.country}</p>
-          <p>{city.continent}</p>
+          &emsp;~&emsp;
+          <p className='singleCity__continent'>{city.continent}</p>
         </div>
+      </div>
+
+      <div className='singleCity__top'>
+        <div className='singleCity__details-container'>
+          <div className='singleCity__details singleCity__details--description'>
+            <h3>Description</h3>
+            <p>{city.description}</p>
+          </div>
+          <div className='singleCity__details singleCity__details--attractions'>
+            <h3>Top 3 Attactions</h3>
+            <p className='singleCity__attractions-wrapper'>
+              {city.top_3_attractions.map((attraction) => (
+                <span className='singleCity__attractions'>{attraction}</span>
+              ))}
+            </p>
+          </div>
+        </div>
+
+        <div className='singleCity__details singleCity__details--travellers-container'>
+          <h3>Travellers who have been to {city.city}</h3>
+        </div>
+      </div>
+      <div className='singleCity__details singleCity__details--reviews-container'>
+        <h3>Reviews of {city.city}</h3>
       </div>
     </section>
   );

@@ -15,6 +15,8 @@ const Navbar = () => {
     }
   };
 
+  console.log('SCROLL', window.scrollY);
+
   return (
     <header className={customNavbar(location.pathname) ? 'header--custom' : 'header'}>
       <nav className='header__navbar'>
