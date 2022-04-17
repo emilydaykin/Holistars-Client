@@ -22,7 +22,7 @@ const Cities = ({ shuffledCities }) => {
     'North America': 'DarkSlateGray',
     Africa: 'MidnightBlue',
     'Australia & Pacific': 'FireBrick',
-    'South America': 'SaddleBrown'
+    'South America': 'SaddleBrown',
   };
 
   const filterCities = async () => {
@@ -30,7 +30,7 @@ const Cities = ({ shuffledCities }) => {
     setCities(filteredCities);
   };
 
-  const handleSearchChange = (e) => {
+  const handleSearchChange = e => {
     console.log('search', e.target.value);
     setSearchInput(e.target.value);
     filterCities();
@@ -52,13 +52,14 @@ const Cities = ({ shuffledCities }) => {
         {!cities ? (
           <p>Loading cities...</p>
         ) : (
-          cities.map((city) => (
+          cities.map(city => (
+            // That would make a reusable component, I would exctract it
             <div className='cities__city-card' key={city.id}>
               <div
                 className='cities__city-image'
                 style={{
                   backgroundImage: `url(${city.image})`,
-                  backgroundSize: 'cover'
+                  backgroundSize: 'cover',
                 }}
               ></div>
               <div className='cities__city-text'>
@@ -70,7 +71,7 @@ const Cities = ({ shuffledCities }) => {
                     style={{
                       color: continentColorCodes[city.continent],
                       fontWeight: 300,
-                      fontSize: '1.25rem'
+                      fontSize: '1.25rem',
                     }}
                   >
                     {city.continent}

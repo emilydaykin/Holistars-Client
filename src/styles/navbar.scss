@@ -1,7 +1,9 @@
 .header {
   background-color: rgba(0, 0, 0, 0.45);
-  position: fixed;
+  position: fixed; // love the fixed header! but we'll have to make sure to give a reasonable amount of padding/margin to the content beneath it. e.g. : .section {margin-top: 6rem or something} 
   width: 100%;
+  top: 0;
+  left: 0;
   
   &__nav-item {
     padding: 0 1.25em;
