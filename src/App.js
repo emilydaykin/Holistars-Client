@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
 import Cities from './components/Cities';
-import SingleCity from './components/SingleCity';
 import Users from './features/users/pages/Users';
 
 const App = () => {
@@ -560,12 +559,10 @@ const App = () => {
           path='/'
           element={<Home shuffledCities={shuffledDestinations} />}
         />
-        <Route path='/about' element={<About />} />
         <Route
           path='/destinations'
           element={<Cities shuffledCities={shuffledDestinations} />}
         />
-        <Route path='/destinations/:id' element={<SingleCity />} />
         <Route path='/users' element={<Users />} />
       </Routes>
     </BrowserRouter>

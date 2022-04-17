@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectAllUsers, fetchUsers } from '../usersSlice';
 
 const Users = () => {
-  const [users, setUsers] = useState([]);
+  const dispatch = useDispatch();
+  const users = useSelector(selectAllUsers);
 
   useEffect(() => {
-    axios
-      .get('http://localhost:8000/authentication/')
-      .then(({ data }) => console.log(data));
-  }, []);
+    dispatch(fetchUsers());
+  }, [dispatch]);
+
+  console.log('dispatched', users);
 
   return (
     <section className='section-main'>
