@@ -4,6 +4,7 @@ import Home from './components/Home';
 import Navbar from './components/Navbar';
 import Cities from './components/Cities';
 import Users from './features/users/pages/Users';
+import SingleUser from './features/users/pages/SingleUser';
 
 const App = () => {
   const mockData = [
@@ -564,6 +565,7 @@ const App = () => {
           element={<Cities shuffledCities={shuffledDestinations} />}
         />
         <Route path='/users' element={<Users />} />
+        <Route path='/users/:id' element={<SingleUser />} />
       </Routes>
     </BrowserRouter>
   );

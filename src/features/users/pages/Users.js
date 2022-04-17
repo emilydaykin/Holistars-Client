@@ -1,16 +1,11 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { selectAllUsers, fetchUsers } from '../usersSlice';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { selectAllUsers } from '../usersSlice';
 
 const Users = () => {
-  const dispatch = useDispatch();
   const users = useSelector(selectAllUsers);
 
-  useEffect(() => {
-    dispatch(fetchUsers());
-  }, [dispatch]);
-
-  console.log('dispatched', users);
+  console.log(users);
 
   return (
     <section className='section-main'>
