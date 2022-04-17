@@ -55,8 +55,8 @@ const Cities = ({ shuffledCities }) => {
           <p>Loading cities...</p>
         ) : (
           cities.map((city) => (
-            <Link className='cities__city-card-link' to={`/destinations/${city.id}`}>
-              <div className='cities__city-card' key={city.id}>
+            <Link className='cities__city-card-link' to={`/destinations/${city.id}`} key={city.id}>
+              <div className='cities__city-card'>
                 <div
                   className='cities__city-image'
                   style={{

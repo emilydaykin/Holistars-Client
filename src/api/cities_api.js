@@ -3,7 +3,7 @@ import axios from 'axios';
 export const getAllCities = async () => {
   const options = {
     method: 'GET',
-    url: '/cities/'
+    url: 'http://localhost:8000/api/cities/'
   };
 
   const { data } = await axios.request(options);
@@ -13,7 +13,7 @@ export const getAllCities = async () => {
 export const searchCities = async (search_term) => {
   const options = {
     method: 'GET',
-    url: `/cities/${search_term}/`
+    url: `http://localhost:8000/api/cities/${search_term}/`
   };
 
   const { data } = await axios.request(options);
@@ -23,7 +23,7 @@ export const searchCities = async (search_term) => {
 export const getCityById = async (id) => {
   const options = {
     method: 'GET',
-    url: `/cities/${id}`
+    url: `http://localhost:8000/api/cities/${id}`
   };
 
   const { data } = await axios.request(options);
