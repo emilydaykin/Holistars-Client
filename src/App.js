@@ -5,6 +5,8 @@ import Navbar from './components/Navbar';
 import Cities from './components/Cities';
 import Users from './features/users/pages/Users';
 import SingleUser from './features/users/pages/SingleUser';
+import Register from './features/users/pages/Register';
+import Login from './features/users/pages/Login';
 
 const App = () => {
   const mockData = [
@@ -566,6 +568,8 @@ const App = () => {
         />
         <Route path='/users' element={<Users />} />
         <Route path='/users/:id' element={<SingleUser />} />
+        <Route path='/register' element={<Register />} />
+        <Route path='/login' element={<Login />} />
       </Routes>
     </BrowserRouter>
   );
