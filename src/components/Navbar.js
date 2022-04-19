@@ -30,6 +30,12 @@ const Navbar = () => {
           <Link className='header__nav-item' to={'/destinations'}>
             Destinations
           </Link>
+          <Link className='header__nav-item' to={'/create-holiday'}>
+            Create Hol
+          </Link>
+          <Link className='header__nav-item' to={'/add-new-city-TEMP'}>
+            Add City
+          </Link>
         </div>
         <div className='header__nav-right'>
           <Link className='header__nav-item' to={'#'}>
