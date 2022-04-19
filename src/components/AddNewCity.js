@@ -11,7 +11,6 @@ const AddNewCity = () => {
     city: '',
     country: ''
   });
-  // const [urlToScrape, setUrlToScrape] = useState('');
   const [searchTerms, setSearchTerms] = useState({
     city: '',
     country: ''
@@ -25,7 +24,6 @@ const AddNewCity = () => {
     setSearchInput({ ...searchInput, [e.target.name]: e.target.value });
     setSearchClicked(false);
     setSearchTerms({ ...searchTerms, [e.target.name]: '' });
-    // setUrlToScrape('');
     setSearchResults(null);
   };
 
