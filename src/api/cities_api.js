@@ -29,3 +29,14 @@ export const getCityById = async (id) => {
   const { data } = await axios.request(options);
   return data;
 };
+
+export const addCity = async (body) => {
+  const options = {
+    method: 'POST',
+    url: 'http://localhost:8000/api/cities/',
+    data: body
+  };
+
+  const { data } = await axios.request(options);
+  return data;
+};

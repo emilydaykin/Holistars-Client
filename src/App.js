@@ -5,6 +5,8 @@ import Home from './components/Home';
 import About from './components/About';
 import Cities from './components/Cities';
 import SingleCity from './components/SingleCity';
+import AddNewCity from './components/AddNewCity';
+import CreateHoliday from './components/CreateHoliday';
 
 const App = () => {
   const mockData = [
@@ -496,6 +498,11 @@ const App = () => {
         <Route path='/about' element={<About />} />
         <Route path='/destinations' element={<Cities shuffledCities={shuffledDestinations} />} />
         <Route path='/destinations/:id' element={<SingleCity />} />
+        <Route path='/create-holiday/' element={<CreateHoliday />} />
+        <Route
+          path='/add-new-city-TEMP'
+          element={<AddNewCity shuffledCities={shuffledDestinations} />}
+        />
       </Routes>
     </BrowserRouter>
   );
