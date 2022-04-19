@@ -38,7 +38,7 @@ const Home = ({ shuffledCities }) => {
         <div className='home__text'>
           <h1 className='home__title'>Holistars</h1>
           <p className='home__subtitle'>The Social Media Hub for Travellers</p>
-          <Link to={'/destinations/'} className='button home__button'>
+          <Link to={'/destinations'} className='button home__button'>
             Browse All Destinations
           </Link>
         </div>
