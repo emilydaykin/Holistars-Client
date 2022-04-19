@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { getAllCities, searchCities } from '../api/cities_api';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
-const Cities = ({ shuffledCities }) => {
-  // const [cities, setCities] = useState(shuffledCities);
+const Cities = () => {
   const [cities, setCities] = useState(null);
   const [searchInput, setSearchInput] = useState('');
 
@@ -11,6 +11,7 @@ const Cities = ({ shuffledCities }) => {
     const getCityData = async () => {
       const allCities = await getAllCities();
       const shuffledCities = allCities.sort(() => 0.5 - Math.random());
+      console.log('shuffledCities', shuffledCities);
       setCities(shuffledCities);
     };
     getCityData();
@@ -40,6 +41,28 @@ const Cities = ({ shuffledCities }) => {
 
   console.log(searchInput);
 
+  // const getImageStatusCode = (url) => {
+  //   /**
+  //    * If image url is invalid, replace with a placeholder image
+  //    */
+  //   let request = new XMLHttpRequest();
+  //   request.open('GET', url);
+  //   request.send();
+  //   console.log('request.status', request.status);
+  //   return request.status;
+  // };
+
+  const checkImageStatus = async (url) => {
+    try {
+      const img = await axios.get(url);
+      console.log(img.response?.status);
+      return img.response?.status;
+    } catch (err) {
+      console.log(err.response?.status);
+      return err.response?.status;
+    }
+  };
+
   return (
     <section className='cities'>
       <h1 className='cities__title'>Destinations</h1>
@@ -56,11 +79,15 @@ const Cities = ({ shuffledCities }) => {
         ) : (
           cities.map((city) => (
             <Link className='cities__city-card-link' to={`/destinations/${city.id}`} key={city.id}>
-              <div className='cities__city-card'>
+              <div className='card cities__city-card'>
                 <div
                   className='cities__city-image'
                   style={{
-                    backgroundImage: `url(${city.image})`,
+                    backgroundImage: `url(${
+                      checkImageStatus(city.image) === 403
+                        ? 'https://images.unsplash.com/photo-1619460941702-0c73da36fe59?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1688&q=80'
+                        : city.image
+                    })`,
                     backgroundSize: 'cover'
                   }}
                 ></div>
