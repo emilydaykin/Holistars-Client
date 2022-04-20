@@ -24,7 +24,7 @@ const Cities = () => {
     'North America': 'DarkSlateGray',
     Africa: 'MidnightBlue',
     'Australia & Pacific': 'FireBrick',
-    'South America': 'SaddleBrown'
+    'South America': 'SaddleBrown',
   };
 
   const filterCities = async () => {
@@ -32,7 +32,7 @@ const Cities = () => {
     setCities(filteredCities);
   };
 
-  const handleSearchChange = (e) => {
+  const handleSearchChange = e => {
     console.log('search', e.target.value);
     setSearchInput(e.target.value);
     filterCities();
