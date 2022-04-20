@@ -2,11 +2,9 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { scrapeSearch, scrapeCities } from '../api/scrape_api';
 import { addCity } from '../api/cities_api';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const AddNewCity = () => {
-  const navigate = useNavigate();
   const [searchResults, setSearchResults] = useState(null);
   const [searchInput, setSearchInput] = useState({
     city: '',
