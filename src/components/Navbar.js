@@ -15,8 +15,6 @@ const Navbar = () => {
     }
   };
 
-  console.log('SCROLL', window.scrollY);
-
   return (
     <header className={customNavbar(location.pathname) ? 'header--custom' : 'header'}>
       <nav className='header__navbar'>
@@ -30,6 +28,11 @@ const Navbar = () => {
           <Link className='header__nav-item' to={'/destinations'}>
             Destinations
           </Link>
+          <Link className='header__nav-item' to={'/create-holiday'}>
+            Create Hol
+          </Link>
+          <Link className='header__nav-item' to={'/add-new-city-TEMP'}>
+            Add City
           {/* Will only be visible to admins */}
           <Link className='header__nav-item' to={'/users'}>
             Users

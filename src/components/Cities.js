@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getAllCities, searchCities } from '../api/cities_api';
 import { Link } from 'react-router-dom';
 
-const Cities = ({ shuffledCities }) => {
-  // const [cities, setCities] = useState(shuffledCities);
+const Cities = () => {
   const [cities, setCities] = useState(null);
   const [searchInput, setSearchInput] = useState('');
 
@@ -11,6 +10,7 @@ const Cities = ({ shuffledCities }) => {
     const getCityData = async () => {
       const allCities = await getAllCities();
       const shuffledCities = allCities.sort(() => 0.5 - Math.random());
+      console.log('shuffledCities', shuffledCities);
       setCities(shuffledCities);
     };
     getCityData();
@@ -56,7 +56,7 @@ const Cities = ({ shuffledCities }) => {
         ) : (
           cities.map((city) => (
             <Link className='cities__city-card-link' to={`/destinations/${city.id}`} key={city.id}>
-              <div className='cities__city-card'>
+              <div className='card cities__city-card'>
                 <div
                   className='cities__city-image'
                   style={{
