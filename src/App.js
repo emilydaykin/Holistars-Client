@@ -5,6 +5,11 @@ import Home from './components/Home';
 import About from './components/About';
 import Cities from './components/Cities';
 import SingleCity from './components/SingleCity';
+import Users from './features/users/pages/Users';
+import SingleUser from './features/users/pages/SingleUser';
+import Register from './features/users/pages/Register';
+import Login from './features/users/pages/Login';
+
 
 const App = () => {
   const mockData = [
@@ -20,8 +25,8 @@ const App = () => {
           'Same same, but different. This Thailish T-shirt philosophy sums up Bangkok, a city where the familiar and the exotic collide like the flavours on a plate of p\u00e0t tai.',
         top_3_attractions: ['Wat Pho', 'Grand Palace', 'Wat Arun'],
         image:
-          'https://lp-cms-production.imgix.net/2021-10/Woman%20walking%20on%20a%20bridge%20to%20Buddhist%20templae%20in%20Thailand%20during%20sunset%20Kiszon%20Pascal%20GettyImages-1135361816%20rfc.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800'
-      }
+          'https://lp-cms-production.imgix.net/2021-10/Woman%20walking%20on%20a%20bridge%20to%20Buddhist%20templae%20in%20Thailand%20during%20sunset%20Kiszon%20Pascal%20GettyImages-1135361816%20rfc.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800',
+      },
     },
     {
       model: 'cities_app.city',
@@ -36,11 +41,11 @@ const App = () => {
         top_3_attractions: [
           'Museo Picasso M\u00e1laga',
           'Cueva de Nerja',
-          'Catedral de M\u00e1laga'
+          'Catedral de M\u00e1laga',
         ],
         image:
-          'https://lp-cms-production.imgix.net/2019-06/626f89a8f06bcf355540b3e50adb64b0-alcazaba.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800'
-      }
+          'https://lp-cms-production.imgix.net/2019-06/626f89a8f06bcf355540b3e50adb64b0-alcazaba.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800',
+      },
     },
     {
       model: 'cities_app.city',
@@ -55,11 +60,11 @@ const App = () => {
         top_3_attractions: [
           'Similan Islands Marine National Park',
           'Ko Tarutao Marine National Park',
-          'Surin Islands Marine National Park'
+          'Surin Islands Marine National Park',
         ],
         image:
-          'https://lp-cms-production.imgix.net/2022-02/AlamyRF_P6Y2J3.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800'
-      }
+          'https://lp-cms-production.imgix.net/2022-02/AlamyRF_P6Y2J3.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800',
+      },
     },
     {
       model: 'cities_app.city',
@@ -73,8 +78,8 @@ const App = () => {
           'Milan is Italy\u2019s city of the future, a fast-paced metropolis where money talks, creativity is big business and looking good is an art form.',
         top_3_attractions: ['The Last Supper', 'Duomo', 'Cimitero Monumentale'],
         image:
-          'https://lp-cms-production.imgix.net/2019-06/59bcd0476dfd8bb94c6d60e828d4db5b-milan.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800'
-      }
+          'https://lp-cms-production.imgix.net/2019-06/59bcd0476dfd8bb94c6d60e828d4db5b-milan.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800',
+      },
     },
     {
       model: 'cities_app.city',
@@ -86,10 +91,14 @@ const App = () => {
         continent: 'Asia',
         description:
           'Taipei is a friendly city whose allure lies in its blend of Chinese culture with a curious fusion of Japanese, Southeast Asian and American influences.',
-        top_3_attractions: ['National Palace Museum', 'Longshan Temple', 'Dihua Street'],
+        top_3_attractions: [
+          'National Palace Museum',
+          'Longshan Temple',
+          'Dihua Street',
+        ],
         image:
-          'https://lp-cms-production.imgix.net/2021-12/Taiwan%20Taipei%20Carlina%20Teteris%20GettyImages-1148422543%20rfc.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800'
-      }
+          'https://lp-cms-production.imgix.net/2021-12/Taiwan%20Taipei%20Carlina%20Teteris%20GettyImages-1148422543%20rfc.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800',
+      },
     },
     {
       model: 'cities_app.city',
@@ -101,10 +110,14 @@ const App = () => {
         continent: 'Asia',
         description:
           'Shanghai: few cities in the world evoke so much history, excess, glamour, mystique and exotic promise in name alone.',
-        top_3_attractions: ['Yuyuan Gardens & Bazaar', 'The Bund', 'Jade Buddha Temple'],
+        top_3_attractions: [
+          'Yuyuan Gardens & Bazaar',
+          'The Bund',
+          'Jade Buddha Temple',
+        ],
         image:
-          'https://lp-cms-production.imgix.net/2019-06/84d63c1c4bd0d9a74035929ccfe0d2158471160a7b60c31e824492d9c625bed3.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800'
-      }
+          'https://lp-cms-production.imgix.net/2019-06/84d63c1c4bd0d9a74035929ccfe0d2158471160a7b60c31e824492d9c625bed3.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800',
+      },
     },
     {
       model: 'cities_app.city',
@@ -116,10 +129,14 @@ const App = () => {
         continent: 'North America',
         description:
           "Explorable neighborhoods, drink-and-dine delights and memorable cultural and outdoor activities framed by striking natural vistas \u2013 there's a superfluity of reasons to fall for this ocean-fringed metropolis.",
-        top_3_attractions: ['Stanley Park', 'Capilano Suspension Bridge Park', 'Science World'],
+        top_3_attractions: [
+          'Stanley Park',
+          'Capilano Suspension Bridge Park',
+          'Science World',
+        ],
         image:
-          'https://lp-cms-production.imgix.net/2021-10/Art%20Gallery%20from%20the%20Law%20Courts%20in%20Downtown%20Vancouver%20Canada%20Destination%20BC%20Tanya%20Goehring.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800'
-      }
+          'https://lp-cms-production.imgix.net/2021-10/Art%20Gallery%20from%20the%20Law%20Courts%20in%20Downtown%20Vancouver%20Canada%20Destination%20BC%20Tanya%20Goehring.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800',
+      },
     },
     {
       model: 'cities_app.city',
@@ -131,10 +148,14 @@ const App = () => {
         continent: 'North America',
         description:
           'Other cities may surprise you, but in San Francisco you will surprise yourself.',
-        top_3_attractions: ['Golden Gate Park', 'Haight Street', 'Chinatown Alleyways'],
+        top_3_attractions: [
+          'Golden Gate Park',
+          'Haight Street',
+          'Chinatown Alleyways',
+        ],
         image:
-          'https://lp-cms-production.imgix.net/2021-10/Woman%20in%20front%20of%20Golden%20Gate%20Bridge%20at%20su%20By%20Simone%20Anne%20Stocksy_txp95a12c14B4D300_Medium_1714977.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800'
-      }
+          'https://lp-cms-production.imgix.net/2021-10/Woman%20in%20front%20of%20Golden%20Gate%20Bridge%20at%20su%20By%20Simone%20Anne%20Stocksy_txp95a12c14B4D300_Medium_1714977.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800',
+      },
     },
     {
       model: 'cities_app.city',
@@ -146,10 +167,14 @@ const App = () => {
         continent: 'North America',
         description:
           'Here in Honolulu, away from the crowded haunts of Waikiki, you get to shake hands with the real Hawaii. A boisterous Polynesian capital, Honolulu delivers an island-style mixed plate of experiences.',
-        top_3_attractions: ['Bishop Museum', '\u02bbIolani Palace', 'Honolulu Museum of Art'],
+        top_3_attractions: [
+          'Bishop Museum',
+          '\u02bbIolani Palace',
+          'Honolulu Museum of Art',
+        ],
         image:
-          'https://lp-cms-production.imgix.net/2019-06/7c85cf02b818fbd0aa683ce6138c373b-honolulu.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800'
-      }
+          'https://lp-cms-production.imgix.net/2019-06/7c85cf02b818fbd0aa683ce6138c373b-honolulu.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800',
+      },
     },
     {
       model: 'cities_app.city',
@@ -161,10 +186,14 @@ const App = () => {
         continent: 'Europe',
         description:
           'Surrounded by mountains and sea, this compact, cultured and fun city has a palpable sense of reinvention.',
-        top_3_attractions: ['Vikingskipshuset', 'Polarship Fram Museum', 'Ekebergparken'],
+        top_3_attractions: [
+          'Vikingskipshuset',
+          'Polarship Fram Museum',
+          'Ekebergparken',
+        ],
         image:
-          'https://lp-cms-production.imgix.net/2019-06/cd04da9740b9dbb11b563df7862f35b4-vikingskipshuset.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800'
-      }
+          'https://lp-cms-production.imgix.net/2019-06/cd04da9740b9dbb11b563df7862f35b4-vikingskipshuset.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800',
+      },
     },
     {
       model: 'cities_app.city',
@@ -176,10 +205,14 @@ const App = () => {
         continent: 'Europe',
         description:
           "When all's said and done, Hamburg's appeal can be narrowed down to one simple calling card: Welcome to one of the coolest cities on earth.",
-        top_3_attractions: ['Mahnmal St-Nikolai', 'Fischmarkt', 'Elbphilharmonie'],
+        top_3_attractions: [
+          'Mahnmal St-Nikolai',
+          'Fischmarkt',
+          'Elbphilharmonie',
+        ],
         image:
-          'https://lp-cms-production.imgix.net/2019-06/GettyImages-519092007_medium.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800'
-      }
+          'https://lp-cms-production.imgix.net/2019-06/GettyImages-519092007_medium.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800',
+      },
     },
     {
       model: 'cities_app.city',
@@ -193,8 +226,8 @@ const App = () => {
           'Although it surrounds bustling Berlin, the Brandenburg state of mind is as far from the German capital as Shangri-La. It\u2019s a quiet, gentle state with vast expanses of unspoilt scenery, much of it in protected nature reserves. Its landscape is quilted in myriad shades, from emerald beech forest to golden fields of rapeseed and sunflowers. It\u2019s also rather flat, windswept and perhaps even a bit melancholic.',
         top_3_attractions: ['Museumsinsel', 'Neues Museum', 'Pergamonmuseum'],
         image:
-          'https://lp-cms-production.imgix.net/2019-06/61e793f310b8c43cf9caa9e3b3c927c9-reichstag.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800'
-      }
+          'https://lp-cms-production.imgix.net/2019-06/61e793f310b8c43cf9caa9e3b3c927c9-reichstag.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800',
+      },
     },
     {
       model: 'cities_app.city',
@@ -206,10 +239,14 @@ const App = () => {
         continent: 'Europe',
         description:
           'Barcelona is an enchanting seaside city with boundless culture, fabled architecture and a world-class drinking and dining scene.',
-        top_3_attractions: ['La Sagrada Fam\u00edlia', 'Park G\u00fcell', 'Museu Picasso'],
+        top_3_attractions: [
+          'La Sagrada Fam\u00edlia',
+          'Park G\u00fcell',
+          'Museu Picasso',
+        ],
         image:
-          'https://lp-cms-production.imgix.net/2021-10/walking%20through%20Barcelona%20park%20near%20Sagrada%20Familia%20Johnny%20Greig%20GettyImages-1194266968%20rfc.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800'
-      }
+          'https://lp-cms-production.imgix.net/2021-10/walking%20through%20Barcelona%20park%20near%20Sagrada%20Familia%20Johnny%20Greig%20GettyImages-1194266968%20rfc.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800',
+      },
     },
     {
       model: 'cities_app.city',
@@ -223,8 +260,8 @@ const App = () => {
           'With their curvy, bleached beaches and stunning jungle interiors, Phi-Phi Don and Phi-Phi Leh \u2013 collectively known as Ko Phi-Phi \u2013 are the darlings of the Andaman Coast. Phi-Phi Don is a hedonistic paradise where visitors cavort by day in azure seas and party all night on soft sand. In contrast, smaller Ko Phi-Phi Leh is undeveloped and hotel-free, its coral reefs and crystal-clear waters overseen by soaring, jagged cliffs, and visited only on day or sunset cruises.',
         top_3_attractions: ['Ao Maya', 'Phi-Phi Viewpoint', 'Viking Cave'],
         image:
-          'https://lp-cms-production.imgix.net/2019-06/a340e0bfd51b1bb5817c536ebc99fd18da667cda5c1f99d326d3db2b89e60719.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800'
-      }
+          'https://lp-cms-production.imgix.net/2019-06/a340e0bfd51b1bb5817c536ebc99fd18da667cda5c1f99d326d3db2b89e60719.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800',
+      },
     },
     {
       model: 'cities_app.city',
@@ -236,10 +273,14 @@ const App = () => {
         continent: 'Europe',
         description:
           'The ever-popular star of the Mediterranean, Mallorca has a sunny personality thanks to its ravishing beaches, azure views, remote mountains and soulful hill towns.',
-        top_3_attractions: ["Palau de l'Almudaina", 'Monestir de Lluc', 'Catedral de Mallorca'],
+        top_3_attractions: [
+          "Palau de l'Almudaina",
+          'Monestir de Lluc',
+          'Catedral de Mallorca',
+        ],
         image:
-          'https://lp-cms-production.imgix.net/2019-06/iStock_000042449226XXLarge.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800'
-      }
+          'https://lp-cms-production.imgix.net/2019-06/iStock_000042449226XXLarge.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800',
+      },
     },
     {
       model: 'cities_app.city',
@@ -253,8 +294,8 @@ const App = () => {
           "All-night raver, boho-cool hippy, blissed-out beach lover \u2013 Ibiza is all this and more to the many, many fans who have a soft spot for the Balearics' party-hard sister. In summer the cream of the world's DJs (David Guetta, Sven V\u00e4th, Armin van Buuren et al) descend on the island, making it the ultimate destination for clubbers. Ibiza's modest population is swallowed whole by the seven-million-odd tourists that arrive en masse each year, and nowhere does sunset chilling or boho-glam style quite like the White Isle.",
         top_3_attractions: ['Dalt Vila', 'Platja de Ses Salines', 'Ramparts'],
         image:
-          'https://lp-cms-production.imgix.net/2019-06/f0752acd6fd78cbb30e711921747da0f84fbf1703ee0298e798e1ca3f5f9d8da.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800'
-      }
+          'https://lp-cms-production.imgix.net/2019-06/f0752acd6fd78cbb30e711921747da0f84fbf1703ee0298e798e1ca3f5f9d8da.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800',
+      },
     },
     {
       model: 'cities_app.city',
@@ -266,10 +307,14 @@ const App = () => {
         continent: 'Europe',
         description:
           'Staggering architecture, a venerable dining scene and stunning landscapes just outside the city centre: Bilbao is one of the great treasures of the Basque Country.',
-        top_3_attractions: ['Museo Guggenheim Bilbao', 'Casco Viejo', 'Itsasmuseum'],
+        top_3_attractions: [
+          'Museo Guggenheim Bilbao',
+          'Casco Viejo',
+          'Itsasmuseum',
+        ],
         image:
-          'https://lp-cms-production.imgix.net/2019-06/9c6723f8d7a68a2d45708ea76279e298-museo-guggenheim.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800'
-      }
+          'https://lp-cms-production.imgix.net/2019-06/9c6723f8d7a68a2d45708ea76279e298-museo-guggenheim.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800',
+      },
     },
     {
       model: 'cities_app.city',
@@ -281,10 +326,14 @@ const App = () => {
         continent: 'Europe',
         description:
           'Regardless of whether you are visiting Dubrovnik for the first time or the hundredth, the sense of awe never fails to descend when you set eyes on the beauty of the old town. Indeed it\u2019s hard to imagine anyone becoming jaded by the city\u2019s limestone streets, baroque buildings and the endless shimmer of the Adriatic, or failing to be inspired by a walk along the ancient city walls that protected the capital of a sophisticated republic for centuries.',
-        top_3_attractions: ['City Walls & Forts', 'Lokrum', 'Rector\u2019s Palace'],
+        top_3_attractions: [
+          'City Walls & Forts',
+          'Lokrum',
+          'Rector\u2019s Palace',
+        ],
         image:
-          'https://lp-cms-production.imgix.net/2019-06/GettyImages-174224876_high.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800'
-      }
+          'https://lp-cms-production.imgix.net/2019-06/GettyImages-174224876_high.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800',
+      },
     },
     {
       model: 'cities_app.city',
@@ -299,11 +348,11 @@ const App = () => {
         top_3_attractions: [
           'Palacio de Bellas Artes',
           'Secretar\u00eda de Educaci\u00f3n P\u00fablica',
-          'Palacio Nacional'
+          'Palacio Nacional',
         ],
         image:
-          'https://lp-cms-production.imgix.net/2021-10/Chapultepec%20Castle%2C%20Mexico%20City%2C%20Mexico%20Dowraik%20shutterstock_1609490656%20rfe.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800'
-      }
+          'https://lp-cms-production.imgix.net/2021-10/Chapultepec%20Castle%2C%20Mexico%20City%2C%20Mexico%20Dowraik%20shutterstock_1609490656%20rfe.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800',
+      },
     },
     {
       model: 'cities_app.city',
@@ -315,10 +364,14 @@ const App = () => {
         continent: 'Europe',
         description:
           "Culturally vibrant, efficiently run and attractively set at the meeting of river and lake, Z\u00fcrich is regularly recognised as one of the world's most liveable cities. Long known as a savvy, hard-working financial centre, Switzerland's largest and wealthiest metropolis has also emerged in the 21st century as one of Central Europe's hippest destinations, with an artsy, post-industrial edge that is epitomised in its exuberant summer Street Parade.",
-        top_3_attractions: ['Fraum\u00fcnster', 'Kunsthaus', 'Sukkulenten-Sammlung'],
+        top_3_attractions: [
+          'Fraum\u00fcnster',
+          'Kunsthaus',
+          'Sukkulenten-Sammlung',
+        ],
         image:
-          'https://lp-cms-production.imgix.net/2019-06/6d39f7482fdf8ed9845dfa546dbca2128c0a27a16e56f6ce95c11dc7a904e2ab.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800'
-      }
+          'https://lp-cms-production.imgix.net/2019-06/6d39f7482fdf8ed9845dfa546dbca2128c0a27a16e56f6ce95c11dc7a904e2ab.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800',
+      },
     },
     {
       model: 'cities_app.city',
@@ -330,10 +383,14 @@ const App = () => {
         continent: 'Europe',
         description:
           "Paris' monument-lined boulevards, museums, classical bistros and boutiques are enhanced by a new wave of multimedia galleries, creative wine bars, design shops and tech start-ups.",
-        top_3_attractions: ['Eiffel Tower', 'Centre Pompidou', 'Sainte-Chapelle'],
+        top_3_attractions: [
+          'Eiffel Tower',
+          'Centre Pompidou',
+          'Sainte-Chapelle',
+        ],
         image:
-          'https://lp-cms-production.imgix.net/2021-10/Guy%20Performing%20Trick%20With%20Skateboard%20By%20Hernandez%20%26%20Sorokina%20Stocksy_txp95a12c14B4D300_Medium_4077051.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800'
-      }
+          'https://lp-cms-production.imgix.net/2021-10/Guy%20Performing%20Trick%20With%20Skateboard%20By%20Hernandez%20%26%20Sorokina%20Stocksy_txp95a12c14B4D300_Medium_4077051.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800',
+      },
     },
     {
       model: 'cities_app.city',
@@ -347,8 +404,8 @@ const App = () => {
           "Floating in a turquoise sea and fringed by white sand and coconut palms, the Gilis are a vision of paradise. And they're booming like nowhere else in Indonesia \u2013 speedboats zip visitors directly from Bali and hip new hotels are rising like autumnal mushrooms.",
         top_3_attractions: ['Lookout', 'Mosque', 'Lighthouse'],
         image:
-          'https://lp-cms-production.imgix.net/2019-06/GettyImages-154246242_high.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800'
-      }
+          'https://lp-cms-production.imgix.net/2019-06/GettyImages-154246242_high.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800',
+      },
     },
     {
       model: 'cities_app.city',
@@ -363,11 +420,11 @@ const App = () => {
         top_3_attractions: [
           'Banyu Wana Amertha Waterfalls',
           'Museum Negeri Propinsi Bali',
-          'Agung Rai Museum of Art'
+          'Agung Rai Museum of Art',
         ],
         image:
-          'https://lp-cms-production.imgix.net/2019-06/iStock_000015693325Large.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800'
-      }
+          'https://lp-cms-production.imgix.net/2019-06/iStock_000015693325Large.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800',
+      },
     },
     {
       model: 'cities_app.city',
@@ -379,10 +436,14 @@ const App = () => {
         continent: 'Africa',
         description:
           "The economic and cultural powerhouse of the country thanks to an influx of oil money, Lagos has an exploding arts and music scene that will keep your yansh engaged far past dawn. If you're headed to Nigeria, you'll have no choice but to jump right in.",
-        top_3_attractions: ['Lekki Conservation Centre', 'Nike Art Gallery', 'Terra Kulture'],
+        top_3_attractions: [
+          'Lekki Conservation Centre',
+          'Nike Art Gallery',
+          'Terra Kulture',
+        ],
         image:
-          'https://lp-cms-production.imgix.net/2021-12/joshua-oluwagbemiga-if1IPTI_iYc-lagos%20nigeria.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800'
-      }
+          'https://lp-cms-production.imgix.net/2021-12/joshua-oluwagbemiga-if1IPTI_iYc-lagos%20nigeria.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800',
+      },
     },
     {
       model: 'cities_app.city',
@@ -394,10 +455,14 @@ const App = () => {
         continent: 'Africa',
         description:
           "Cairo is magnificent, beautiful and, at time, infuriating. From above, the distorted roar of the muezzins' call to prayer echoes out from duelling minarets. Below, car horns bellow tuneless symphonies amid avenues of faded 19th-century grandeur while donkey carts rattle down dusty lanes lined with colossal Fatimid and Mamluk monuments.",
-        top_3_attractions: ['Pyramids of Giza', 'Egyptian Museum', 'Great Pyramid of Khufu'],
+        top_3_attractions: [
+          'Pyramids of Giza',
+          'Egyptian Museum',
+          'Great Pyramid of Khufu',
+        ],
         image:
-          'https://lp-cms-production.imgix.net/2019-06/b5e84bd2f7ce4b24905816c3e2e9b8c22331f5ad049cc61fb6fdfacaffb42cf1.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800'
-      }
+          'https://lp-cms-production.imgix.net/2019-06/b5e84bd2f7ce4b24905816c3e2e9b8c22331f5ad049cc61fb6fdfacaffb42cf1.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800',
+      },
     },
     {
       model: 'cities_app.city',
@@ -412,11 +477,11 @@ const App = () => {
         top_3_attractions: [
           'Agios Sostis',
           'Panagia Paraportiani',
-          'Archaeological Museum of Mykonos'
+          'Archaeological Museum of Mykonos',
         ],
         image:
-          'https://lp-cms-production.imgix.net/2019-06/230da96aa199945c5954fd026896883a5446ecb98c3b0dfdbcab65ac6e4c6a35.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800'
-      }
+          'https://lp-cms-production.imgix.net/2019-06/230da96aa199945c5954fd026896883a5446ecb98c3b0dfdbcab65ac6e4c6a35.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800',
+      },
     },
     {
       model: 'cities_app.city',
@@ -430,8 +495,8 @@ const App = () => {
           'With equal measures of grunge and grace, Athens is a heady mix of ancient history and contemporary cool.',
         top_3_attractions: ['Acropolis Museum', 'Parthenon', 'Acropolis'],
         image:
-          'https://lp-cms-production.imgix.net/2019-06/a5f07aef2a26b56c9ce31174e6ef49618a57328934206ce258388578cd5f9775.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800'
-      }
+          'https://lp-cms-production.imgix.net/2019-06/a5f07aef2a26b56c9ce31174e6ef49618a57328934206ce258388578cd5f9775.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800',
+      },
     },
     {
       model: 'cities_app.city',
@@ -443,10 +508,14 @@ const App = () => {
         continent: 'Europe',
         description:
           "If you approach Santorini from the water, it's hard not to be awed by the sheer cliffs that soar above a turquoise sea, by the fact that you're sailing in an immense crater of a drowned volcano and that before you lies an island shaped by an ancient eruption cataclysmic beyond imagining.",
-        top_3_attractions: ['Ancient Thira', 'Museum of Prehistoric Thera', 'Art Space'],
+        top_3_attractions: [
+          'Ancient Thira',
+          'Museum of Prehistoric Thera',
+          'Art Space',
+        ],
         image:
-          'https://lp-cms-production.imgix.net/2019-06/3328086eaa256f19c44de115ae57c375c196d70cf87acf71db943bcce2b277aa.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800'
-      }
+          'https://lp-cms-production.imgix.net/2019-06/3328086eaa256f19c44de115ae57c375c196d70cf87acf71db943bcce2b277aa.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800',
+      },
     },
     {
       model: 'cities_app.city',
@@ -460,8 +529,8 @@ const App = () => {
           'A heady mix of haunting ruins, awe-inspiring art and vibrant street life, Italy\u2019s hot-blooded capital is one of the world\u2019s most romantic and charismatic cities.',
         top_3_attractions: ['Vatican Museums', 'Roman Forum', 'Palatino'],
         image:
-          'https://lp-cms-production.imgix.net/2021-10/Rome%20cristina-gottardi.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800'
-      }
+          'https://lp-cms-production.imgix.net/2021-10/Rome%20cristina-gottardi.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800',
+      },
     },
     {
       model: 'cities_app.city',
@@ -476,12 +545,12 @@ const App = () => {
         top_3_attractions: [
           'Galleria degli Uffizi',
           'Basilica di Santa Maria Novella',
-          'Palazzo Vecchio'
+          'Palazzo Vecchio',
         ],
         image:
-          'https://lp-cms-production.imgix.net/2021-12/Asian-tourist-visiting-Florence-Italy-By-Studio-Marmellata-Stocksy_txp95a12c14B4D300_Medium_2019114-RFC.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800'
-      }
-    }
+          'https://lp-cms-production.imgix.net/2021-12/Asian-tourist-visiting-Florence-Italy-By-Studio-Marmellata-Stocksy_txp95a12c14B4D300_Medium_2019114-RFC.jpg?sharp=10&vib=20&w=1200&auto=compress&fit=crop&fm=auto&h=800',
+      },
+    },
   ];
 
   const shuffledDestinations = mockData.sort(() => 0.5 - Math.random());
@@ -496,6 +565,10 @@ const App = () => {
         <Route path='/about' element={<About />} />
         <Route path='/destinations' element={<Cities shuffledCities={shuffledDestinations} />} />
         <Route path='/destinations/:id' element={<SingleCity />} />
+        <Route path='/users' element={<Users />} />
+        <Route path='/users/:id' element={<SingleUser />} />
+        <Route path='/register' element={<Register />} />
+        <Route path='/login' element={<Login />} />
       </Routes>
     </BrowserRouter>
   );

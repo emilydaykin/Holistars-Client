@@ -1,13 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Handlee&family=Poppins:wght@100;200;400;500;600;700&display=swap');
+@import "utils/variables";
+@import "base/tipography";
+@import "layout/layout";
+@import "components/form";
 @import './home.scss';
 @import './navbar.scss';
 @import './cities.scss';
 @import './single-city.scss';
 
 body {
-  box-sizing: border-box;
+  box-sizing: border-box; // this would only put it on the body, it is not inherited
   margin: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-family-body);
 }
 
 h1 {
@@ -28,6 +32,12 @@ h1 {
     border: 3px solid #e8ffff;
     transform: scale(1.2);
   }
+}
+
+.card {
+  &--city  {}
+
+  &--user {}
 }
 
 .input {
