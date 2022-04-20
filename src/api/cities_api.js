@@ -20,7 +20,7 @@ export const searchCities = async search_term => {
   return data;
 };
 
-export const getCityById = async id => {
+export const getCityById = async (id) => {
   const options = {
     method: 'GET',
     url: `http://localhost:8000/api/cities/${id}`,

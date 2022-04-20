@@ -54,18 +54,14 @@ const Cities = ({ shuffledCities }) => {
         {!cities ? (
           <p>Loading cities...</p>
         ) : (
-          cities.map(city => (
-            <Link
-              className='cities__city-card-link'
-              to={`/destinations/${city.id}`}
-              key={city.id}
-            >
+          cities.map((city) => (
+            <Link className='cities__city-card-link' to={`/destinations/${city.id}`} key={city.id}>
               <div className='cities__city-card'>
                 <div
                   className='cities__city-image'
                   style={{
                     backgroundImage: `url(${city.image})`,
-                    backgroundSize: 'cover',
+                    backgroundSize: 'cover'
                   }}
                 ></div>
                 <div className='cities__city-text'>
@@ -77,7 +73,7 @@ const Cities = ({ shuffledCities }) => {
                       style={{
                         color: continentColorCodes[city.continent],
                         fontWeight: 300,
-                        fontSize: '1.25rem',
+                        fontSize: '1.25rem'
                       }}
                     >
                       {city.continent}

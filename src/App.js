@@ -1,12 +1,15 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './components/Home';
 import Navbar from './components/Navbar';
+import Home from './components/Home';
+import About from './components/About';
 import Cities from './components/Cities';
+import SingleCity from './components/SingleCity';
 import Users from './features/users/pages/Users';
 import SingleUser from './features/users/pages/SingleUser';
 import Register from './features/users/pages/Register';
 import Login from './features/users/pages/Login';
+
 
 const App = () => {
   const mockData = [
@@ -558,14 +561,10 @@ const App = () => {
     <BrowserRouter>
       <Navbar />
       <Routes>
-        <Route
-          path='/'
-          element={<Home shuffledCities={shuffledDestinations} />}
-        />
-        <Route
-          path='/destinations'
-          element={<Cities shuffledCities={shuffledDestinations} />}
-        />
+        <Route path='/' element={<Home shuffledCities={shuffledDestinations} />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/destinations' element={<Cities shuffledCities={shuffledDestinations} />} />
+        <Route path='/destinations/:id' element={<SingleCity />} />
         <Route path='/users' element={<Users />} />
         <Route path='/users/:id' element={<SingleUser />} />
         <Route path='/register' element={<Register />} />
