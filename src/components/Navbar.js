@@ -33,6 +33,7 @@ const Navbar = () => {
           </Link>
           <Link className='header__nav-item' to={'/add-new-city-TEMP'}>
             Add City
+          </Link>
           {/* Will only be visible to admins */}
           <Link className='header__nav-item' to={'/users'}>
             Users
