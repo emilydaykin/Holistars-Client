@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getAllCities, searchCities } from '../api/cities_api';
 import { Link } from 'react-router-dom';
-// import axios from 'axios';
 
 const Cities = () => {
   const [cities, setCities] = useState(null);
