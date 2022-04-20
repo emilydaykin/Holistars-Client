@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { scrapeSearch, scrapeCities } from '../api/scrape_api';
 import { addCity } from '../api/cities_api';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const AddNewCity = () => {
   const navigate = useNavigate();
@@ -19,6 +20,22 @@ const AddNewCity = () => {
   const [scraping, setScraping] = useState(false);
 
   console.log(searchResults);
+
+  useEffect(() => {
+    const replaceInvalidImage = async () => {
+      for (let result of searchResults) {
+        try {
+          await axios.get(result.image).then(({ resp }) => console.log(resp));
+        } catch (err) {
+          result.image =
+            err.response?.status === 403
+              ? 'https://images.unsplash.com/photo-1619460941702-0c73da36fe59?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1688&q=80'
+              : result.image;
+        }
+      }
+    };
+    replaceInvalidImage();
+  }, [searchResults]);
 
   const handleSearchChange = (e) => {
     setSearchInput({ ...searchInput, [e.target.name]: e.target.value });

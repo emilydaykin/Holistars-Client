@@ -17,6 +17,8 @@ const Cities = () => {
     getCityData();
   }, []);
 
+  useEffect(() => {}, [cities]);
+
   console.log('cities', cities);
 
   const continentColorCodes = {
@@ -83,11 +85,7 @@ const Cities = () => {
                 <div
                   className='cities__city-image'
                   style={{
-                    backgroundImage: `url(${
-                      checkImageStatus(city.image) === 403
-                        ? 'https://images.unsplash.com/photo-1619460941702-0c73da36fe59?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1688&q=80'
-                        : city.image
-                    })`,
+                    backgroundImage: `url(${city.image})`,
                     backgroundSize: 'cover'
                   }}
                 ></div>
