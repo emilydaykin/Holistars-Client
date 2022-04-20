@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getAllCities, searchCities } from '../api/cities_api';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+// import axios from 'axios';
 
 const Cities = () => {
   const [cities, setCities] = useState(null);
@@ -16,8 +16,6 @@ const Cities = () => {
     };
     getCityData();
   }, []);
-
-  useEffect(() => {}, [cities]);
 
   console.log('cities', cities);
 
@@ -42,28 +40,6 @@ const Cities = () => {
   };
 
   console.log(searchInput);
-
-  // const getImageStatusCode = (url) => {
-  //   /**
-  //    * If image url is invalid, replace with a placeholder image
-  //    */
-  //   let request = new XMLHttpRequest();
-  //   request.open('GET', url);
-  //   request.send();
-  //   console.log('request.status', request.status);
-  //   return request.status;
-  // };
-
-  const checkImageStatus = async (url) => {
-    try {
-      const img = await axios.get(url);
-      console.log(img.response?.status);
-      return img.response?.status;
-    } catch (err) {
-      console.log(err.response?.status);
-      return err.response?.status;
-    }
-  };
 
   return (
     <section className='cities'>

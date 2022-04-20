@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { scrapeSearch, scrapeCities } from '../api/scrape_api';
 import { addCity } from '../api/cities_api';
@@ -19,24 +19,6 @@ const AddNewCity = () => {
   const [searchClicked, setSearchClicked] = useState(false);
   const [scraping, setScraping] = useState(false);
 
-  console.log(searchResults);
-
-  useEffect(() => {
-    const replaceInvalidImage = async () => {
-      for (let result of searchResults) {
-        try {
-          await axios.get(result.image).then(({ resp }) => console.log(resp));
-        } catch (err) {
-          result.image =
-            err.response?.status === 403
-              ? 'https://images.unsplash.com/photo-1619460941702-0c73da36fe59?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1688&q=80'
-              : result.image;
-        }
-      }
-    };
-    replaceInvalidImage();
-  }, [searchResults]);
-
   const handleSearchChange = (e) => {
     setSearchInput({ ...searchInput, [e.target.name]: e.target.value });
     setSearchClicked(false);
@@ -52,22 +34,15 @@ const AddNewCity = () => {
      *       results to display them for the user to select
      */
     setScraping(true);
-    console.log('------scraping......');
-    console.log({ updatedSearchTerms });
     const urls = await scrapeSearch(updatedSearchTerms);
     const cities = await scrapeCities({ urls: urls });
     setSearchResults(cities);
     setScraping(false);
   };
 
-  console.log('scraping mode:', scraping);
-
-  console.log('-------- SEARCH RESULTS:', searchResults);
-
   const handleSearchButton = (e) => {
     e.preventDefault();
     setSearchClicked(true);
-    console.log(searchTerms);
     const updatedSearchTerms = {
       ...searchTerms,
       city: searchInput.city.toLowerCase(),
@@ -78,18 +53,26 @@ const AddNewCity = () => {
     scrapeUserSearchThenCity(updatedSearchTerms);
   };
 
+  const replaceInvalidImage = async (cityObj) => {
+    try {
+      await axios.get(cityObj.image).then(({ resp }) => console.log(resp));
+    } catch (err) {
+      cityObj.image =
+        err.response?.status === 403
+          ? 'https://images.unsplash.com/photo-1619460941702-0c73da36fe59?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1688&q=80'
+          : cityObj.image;
+    }
+  };
+
   const addCityToDb = async (cityObject) => {
     console.log('CITY SELECTED!');
+    await replaceInvalidImage(cityObject);
     console.log('cityObject', cityObject);
     await addCity(cityObject);
     setTimeout(() => {
       navigate('/create-holiday');
     }, 3000);
   };
-
-  console.log('cityInput', searchInput.city);
-  console.log('countryInput', searchInput.country);
-  console.log('searchTerms', searchTerms);
 
   return (
     <section className='addNewCity'>
