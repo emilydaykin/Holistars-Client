@@ -5,6 +5,37 @@
     padding-top: 3.5em;    
   }
 
+  &__city-clicked-popup {
+    border: 5px solid #959595;
+    padding: 0 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 2rem;
+    border-radius: 15px;
+    height: 40%;
+    width: 40%;
+    position: absolute;
+    // background-color: rgba(255, 255, 255, 0.85);
+    background-color: #fff;
+    left: 50%;
+    top: 55%;
+    transform: translateX(-50%) translateY(-50%);
+    -webkit-box-shadow: 0px 0px 50px 30px rgba(191, 191, 191, 0.56);
+    box-shadow: 00px 0px 50px 30px rgba(191, 191, 191, 0.56);
+    z-index: 1;
+
+    p {
+      margin-top: 0;
+    }
+
+    &--button {
+      font-size: 0.9rem;
+    }
+  }
+
   &__form {
     padding: 2em;
   }
