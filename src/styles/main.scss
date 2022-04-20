@@ -33,6 +33,12 @@ h1 {
   }
 }
 
+.card {
+  &--city  {}
+
+  &--user {}
+}
+
 .input {
   font-family: inherit;
   width: 450px;

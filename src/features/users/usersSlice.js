@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import api from '../../api/users_api';
 import axios from 'axios';
 
 const USERS_URL = 'http://localhost:8000/authentication';
@@ -7,7 +8,7 @@ const initialState = [];
 
 export const fetchUsers = createAsyncThunk('users/fetchUsers', async () => {
   try {
-    const response = await axios.get(USERS_URL);
+    const response = await api.get('/authentication');
     return response.data;
   } catch (err) {
     return err.message;
