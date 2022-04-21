@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import api from '../../api/users_api';
 import axios from 'axios';
 
-const USERS_URL = 'http://localhost:8000/authentication';
+const USERS_URL = 'http://localhost:8000/api/authentication';
 
 const initialState = [];
 

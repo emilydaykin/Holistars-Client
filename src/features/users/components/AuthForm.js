@@ -2,10 +2,12 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { registerUser } from '../usersSlice';
+import { useNavigate } from 'react-router-dom';
 import { loginUser } from '../../../api/users_api';
 
 const AuthForm = ({ login }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const initialLoginlUser = {
     email: '',
@@ -36,7 +38,7 @@ const AuthForm = ({ login }) => {
     axios
       .request({
         method: 'POST',
-        url: 'http://localhost:8000/authentication/login/',
+        url: 'http://localhost:8000/api/authentication/login/',
         data: user,
       })
       .then(({ data }) => {
@@ -47,6 +49,7 @@ const AuthForm = ({ login }) => {
         return data;
       })
       .catch(console.error);
+    navigate('/');
   };
 
   const handleImage = async e => {
