@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { getAllCities, searchCities } from '../api/cities_api';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectAllUsers, selectUserById } from '../features/users/usersSlice';
 
 const Cities = () => {
   const [cities, setCities] = useState(null);
   const [searchInput, setSearchInput] = useState('');
+
+  const users = useSelector((state) => selectUserById(state, Number(3)));
+  console.log('USERS', users);
 
   useEffect(() => {
     const getCityData = async () => {
@@ -24,7 +29,7 @@ const Cities = () => {
     'North America': 'DarkSlateGray',
     Africa: 'MidnightBlue',
     'Australia & Pacific': 'FireBrick',
-    'South America': 'SaddleBrown',
+    'South America': 'SaddleBrown'
   };
 
   const filterCities = async () => {
@@ -32,7 +37,7 @@ const Cities = () => {
     setCities(filteredCities);
   };
 
-  const handleSearchChange = e => {
+  const handleSearchChange = (e) => {
     console.log('search', e.target.value);
     setSearchInput(e.target.value);
     filterCities();
