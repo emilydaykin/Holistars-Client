@@ -48,17 +48,21 @@ const Navbar = () => {
           <Link className='header__nav-item' to={'/add-new-city-TEMP'}>
             Add City
           </Link>
+          <Link className='header__nav-item' to={'/profile/3'}>
+            Profile
+          </Link>
+          {/* Will only be visible to admins */}
+          <Link className='header__nav-item' to={'/users'}>
+            Users
+          </Link>
 
-          {user?.is_staff && (
-            <Link className='header__nav-item' to={'/users'}>
-              Users
-            </Link>
-          )}
         </div>
         <div className='header__nav-right'>
-          {/* Dont see how it would work hahahahah. I'm too dumb for this trickery! */}
-          <Link className='header__nav-item' to={'#'}>
-            Sign In/Up
+          <Link className='header__nav-item' to={'/register'}>
+            Register
+          </Link>
+          <Link className='header__nav-item' to={'/login'}>
+            Log In
           </Link>
         </div>
       </nav>
