@@ -6,10 +6,8 @@ import { Provider } from 'react-redux';
 import { fetchUsers } from './features/users/usersSlice';
 import { fetchCities } from './features/cities/citiesSlice';
 import './styles/main.scss';
-// import './styles/home.scss';
-// import './styles/navbar.scss';
 
-// This will make users immediately available throughout the app. Amazing innit? And would save us call to the server for single gets - especially important for the scarping stuff...
+// This will make users immediately available throughout the app. Amazing innit? And would save us call to the server for single gets - especially important for the scraping stuff...
 store.dispatch(fetchUsers());
 store.dispatch(fetchCities());
 

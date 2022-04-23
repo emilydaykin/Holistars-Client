@@ -14,14 +14,28 @@ export const fetchCities = createAsyncThunk('cities/fetchCities', async () => {
   }
 });
 
+export const filterCities = createAsyncThunk('cities/filterCities', async (search_term) => {
+  try {
+    const response = await axios.get(`http://localhost:8000/api/cities/${search_term}/`);
+    console.log('RESPONSE', response.data);
+    return response.data;
+  } catch (err) {
+    return err.message;
+  }
+});
+
 const citiesSlice = createSlice({
   name: 'cities',
   initialState,
   reducers: {},
   extraReducers(builder) {
-    builder.addCase(fetchCities.fulfilled, (state, action) => {
-      return action.payload;
-    });
+    builder
+      .addCase(fetchCities.fulfilled, (state, action) => {
+        return action.payload;
+      })
+      .addCase(filterCities.fulfilled, (state, action) => {
+        state.cities.push(action.payload);
+      });
   }
 });
 

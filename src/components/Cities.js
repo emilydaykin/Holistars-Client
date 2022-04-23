@@ -1,32 +1,31 @@
 import React, { useState, useEffect } from 'react';
-import { getAllCities, searchCities } from '../api/cities_api';
+import { searchCities } from '../api/cities_api';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { selectAllUsers, selectUserById } from '../features/users/usersSlice';
-import { selectAllCities } from '../features/cities/citiesSlice';
+// import { useSelector } from 'react-redux';
+// import { selectAllUsers, selectUserById } from '../features/users/usersSlice';
+// import { selectAllCities } from '../features/cities/citiesSlice';
+// import { filterCities } from '../features/cities/citiesSlice';
+import { getAllCities } from '../api/cities_api';
 
 const Cities = () => {
-  // const [cities, setCities] = useState(null);
+  // const allCities = useSelector(selectAllCities);
+  const [cities, setCities] = useState(null);
   const [searchInput, setSearchInput] = useState('');
 
   // const users = useSelector((state) => selectUserById(state, Number(3)));
-  const users = useSelector(selectAllUsers);
-  console.log('USERS', users);
+  // const users = useSelector(selectAllUsers);
+  // console.log('USERS', users);
 
-  const cities = useSelector(selectAllCities);
-  console.log('CITIES', cities);
+  // console.log('CITIES', cities);
 
-  // useEffect(() => {
-  //   const getCityData = async () => {
-  //     const allCities = await getAllCities();
-  //     const shuffledCities = allCities.sort(() => 0.5 - Math.random());
-  //     console.log('shuffledCities', shuffledCities);
-  //     setCities(shuffledCities);
-  //   };
-  //   getCityData();
-  // }, []);
-
-  console.log('cities', cities);
+  useEffect(() => {
+    const getCityData = async () => {
+      const allCities = await getAllCities();
+      const shuffledCities = allCities.sort(() => 0.5 - Math.random());
+      setCities(shuffledCities);
+    };
+    getCityData();
+  }, []);
 
   const continentColorCodes = {
     Asia: 'Indigo',
@@ -37,29 +36,31 @@ const Cities = () => {
     'South America': 'SaddleBrown'
   };
 
-  // const filterCities = async () => {
-  //   const filteredCities = await searchCities(searchInput);
-  //   setCities(filteredCities);
-  // };
+  const filterThroughCities = async () => {
+    const filteredCities = await searchCities(searchInput);
+    // const filteredCities = filterCities(searchInput);
+    setCities(filteredCities);
+  };
 
-  // const handleSearchChange = (e) => {
-  //   console.log('search', e.target.value);
-  //   setSearchInput(e.target.value);
-  //   filterCities();
-  // };
+  const handleSearchChange = (e) => {
+    console.log('search', e.target.value);
+    setSearchInput(e.target.value);
+    filterThroughCities();
+    // filterCities(e.target.value);
+  };
 
   console.log(searchInput);
 
   return (
     <section className='cities'>
       <h1 className='cities__title'>Destinations</h1>
-      {/* <input
+      <input
         className='input cities__search-bar'
         type='text'
         placeholder='Search city, country, continent, or recommended attractions...'
         onChange={handleSearchChange}
         value={searchInput}
-      ></input> */}
+      ></input>
       <div className='cities__container'>
         {!cities ? (
           <p>Loading cities...</p>

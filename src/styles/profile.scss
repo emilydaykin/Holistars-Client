@@ -1,5 +1,5 @@
 .profile {
-  padding-bottom: 2em;
+  padding-bottom: 1em;
 
   h3 {
     font-size: 1.2rem;
@@ -67,7 +67,7 @@
 
   &__timeline-section {
     width: 62%;
-    padding: 1em 2em 0 2em;
+    padding: 1em 2em;
     position: relative;
     margin-top: 1em;
     height: 80vh;
@@ -104,7 +104,7 @@
     width: 45%;
     transition: 0.3s ease-in-out;
     &:hover {
-      transform: scale(1.1);
+      transform: scale(1.035);
     }
   }
   
@@ -173,6 +173,6 @@
     background-color: #000;
     position: absolute;
     top: 13%;
-    left: 47.25%;
+    left: 47.4%;
   }
 }
