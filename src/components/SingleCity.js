@@ -1,19 +1,24 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getCityById } from '../api/cities_api';
+import { selectCityById } from '../features/cities/citiesSlice';
 
 const SingleCity = () => {
-  const [city, setCity] = useState(null);
+  // const [city, setCity] = useState(null);
   const { id } = useParams();
   console.log('id', id);
 
-  useEffect(() => {
-    const getCity = async () => {
-      const destination = await getCityById(id);
-      setCity(destination);
-    };
-    getCity();
-  }, [id]);
+  const city = useSelector((state) => selectCityById(state, Number(id)));
+  console.log('CITYYYYYYY', city);
+
+  // useEffect(() => {
+  //   const getCity = async () => {
+  //     const destination = await getCityById(id);
+  //     setCity(destination);
+  //   };
+  //   getCity();
+  // }, [id]);
 
   if (!city) return <p>Loading city...</p>;
   return (
