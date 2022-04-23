@@ -1,20 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { selectUserById } from '../features/users/usersSlice';
-import jwtDecode from 'jwt-decode';
+import { useSelector, useDispatch } from 'react-redux';
+import { logout } from '../features/login/loginSlice';
 
 const Navbar = () => {
   const location = useLocation();
-  const [loggedIn, setLoggedIn] = useState(
-    sessionStorage.getItem('token') ? true : false
-  );
+  const dispatch = useDispatch();
 
-  // const token = loggedIn && jwtDecode(sessionStorage.getItem('token'));
-  // const user = useSelector(state => selectUserById(state, Number(token?.sub)));
-
-  // console.log(user);
+  const userInfo = useSelector(state => state.userInfo);
+  console.log(userInfo);
 
   const customNavbar = location => {
     // If path = home or singleCity, make navbar transparent:
@@ -25,6 +20,10 @@ const Navbar = () => {
     ) {
       return true;
     }
+  };
+
+  const handleLogout = () => {
+    dispatch(logout());
   };
 
   return (
@@ -48,18 +47,35 @@ const Navbar = () => {
           <Link className='header__nav-item' to={'/add-new-city-TEMP'}>
             Add City
           </Link>
-
-          {/* {user?.is_staff && (
-            <Link className='header__nav-item' to={'/users'}>
-              Users
-            </Link>
-          )} */}
         </div>
         <div className='header__nav-right'>
-          {/* Dont see how it would work hahahahah. I'm too dumb for this trickery! */}
-          <Link className='header__nav-item' to={'#'}>
-            Sign In/Up
-          </Link>
+          {userInfo.id ? (
+            <>
+              <Link
+                className='header__nav-item'
+                to={`/authentication/${userInfo.id}`}
+              >
+                <img
+                  src={userInfo.image}
+                  alt={userInfo.user}
+                  style={{ height: '30px' }}
+                />
+                {userInfo.user}
+              </Link>
+              <Link className='header__nav-item' to='#' onClick={handleLogout}>
+                Logout
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link className='header__nav-item' to='/login'>
+                Login
+              </Link>
+              <Link className='header__nav-item' to='/register'>
+                Register
+              </Link>
+            </>
+          )}
         </div>
       </nav>
     </header>
