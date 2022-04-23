@@ -15,17 +15,14 @@ export const fetchUsers = createAsyncThunk('users/fetchUsers', async () => {
   }
 });
 
-export const registerUser = createAsyncThunk(
-  'users/registerUser',
-  async newUser => {
-    try {
-      const response = await axios.post(`${USERS_URL}/register/`, newUser);
-      return response.data;
-    } catch (err) {
-      return err.message;
-    }
+export const registerUser = createAsyncThunk('users/registerUser', async (newUser) => {
+  try {
+    const response = await axios.post(`${USERS_URL}/register/`, newUser);
+    return response.data;
+  } catch (err) {
+    return err.message;
   }
-);
+});
 
 const usersSlice = createSlice({
   name: 'users',
@@ -39,12 +36,11 @@ const usersSlice = createSlice({
       .addCase(registerUser.fulfilled, (state, action) => {
         state.users.push(action.payload);
       });
-  },
+  }
 });
 
-export const selectAllUsers = state => state.users;
-export const selectUserById = (state, id) =>
-  state.users.find(user => user.id === id);
+export const selectAllUsers = (state) => state.users;
+export const selectUserById = (state, id) => state.users.find((user) => user.id === id);
 
 export const { userRegistered } = usersSlice.actions;
 

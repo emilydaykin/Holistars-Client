@@ -53,7 +53,7 @@ const Navbar = () => {
             <>
               <Link
                 className='header__nav-item'
-                to={`/authentication/${userInfo.id}`}
+                to={`/profile/${userInfo.id}`}
               >
                 <img
                   src={userInfo.image}
@@ -76,6 +76,7 @@ const Navbar = () => {
               </Link>
             </>
           )}
+
         </div>
       </nav>
     </header>
