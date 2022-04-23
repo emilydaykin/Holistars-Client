@@ -11,10 +11,10 @@ const Navbar = () => {
     sessionStorage.getItem('token') ? true : false
   );
 
-  const token = loggedIn && jwtDecode(sessionStorage.getItem('token'));
-  const user = useSelector(state => selectUserById(state, Number(token?.sub)));
+  // const token = loggedIn && jwtDecode(sessionStorage.getItem('token'));
+  // const user = useSelector(state => selectUserById(state, Number(token?.sub)));
 
-  console.log(user);
+  // console.log(user);
 
   const customNavbar = location => {
     // If path = home or singleCity, make navbar transparent:
@@ -49,11 +49,11 @@ const Navbar = () => {
             Add City
           </Link>
 
-          {user?.is_staff && (
+          {/* {user?.is_staff && (
             <Link className='header__nav-item' to={'/users'}>
               Users
             </Link>
-          )}
+          )} */}
         </div>
         <div className='header__nav-right'>
           {/* Dont see how it would work hahahahah. I'm too dumb for this trickery! */}

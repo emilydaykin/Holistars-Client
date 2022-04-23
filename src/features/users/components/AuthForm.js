@@ -46,7 +46,7 @@ const AuthForm = ({ login }) => {
           ? window.sessionStorage.setItem('token', data.token)
           : window.sessionStorage.removeItem('token');
 
-        return data;
+        console.log(data);
       })
       .catch(console.error);
     navigate('/');
