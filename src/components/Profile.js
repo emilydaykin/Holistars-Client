@@ -128,7 +128,7 @@ const Profile = () => {
             <div className='profile_timeline-container'>
               <div
                 className={userProfile.holidays.length > 1 ? 'profile__line' : 'hide'}
-                style={{ height: `${98 * userProfile.holidays.length - 1}px` }}
+                style={{ height: `${120 * userProfile.holidays.length - 1}px` }}
               ></div>
               {userProfile.holidays.map((holiday) => (
                 <div key={holiday.id} className='profile__timeline-row'>
@@ -139,15 +139,18 @@ const Profile = () => {
                     className='profile__timeline-entry-link'
                     to={`/destinations/${holiday.city.id}`}
                   >
-                    <div
-                      className='profile__timeline-entry'
-                      style={{ backgroundImage: `url(${holiday.city.image})` }}
-                    >
-                      <p>
-                        {holiday.city.city}, {holiday.city.country}
-                      </p>
-                      <p>{prettifyDate(holiday.date)}</p>
-                      <p>{holiday.duration}</p>
+                    <div className='profile__timeline-entry'>
+                      <div
+                        className='profile__holiday-image'
+                        style={{ backgroundImage: `url(${holiday.city.image})` }}
+                      ></div>
+                      <div className='profile__holiday-text'>
+                        <p className='profile__destination'>
+                          {holiday.city.city}, {holiday.city.country}
+                        </p>
+                        <p className='profile__date'>{prettifyDate(holiday.date)}</p>
+                        <p className='profile__duration'>{holiday.duration}</p>
+                      </div>
                     </div>
                   </Link>
                 </div>
