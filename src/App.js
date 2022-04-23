@@ -12,6 +12,7 @@ import Users from './features/users/pages/Users';
 import SingleUser from './features/users/pages/SingleUser';
 import Register from './features/users/pages/Register';
 import Login from './features/users/pages/Login';
+import AddReview from './features/reviews/pages/AddReview';
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
         <Route path='/users/:id' element={<SingleUser />} />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/review' element={<AddReview />} />
       </Routes>
     </BrowserRouter>
   );
