@@ -5,20 +5,20 @@ import { getCityById } from '../api/cities_api';
 import { selectCityById } from '../features/cities/citiesSlice';
 
 const SingleCity = () => {
-  // const [city, setCity] = useState(null);
+  const [city, setCity] = useState(null);
   const { id } = useParams();
   console.log('id', id);
 
-  const city = useSelector((state) => selectCityById(state, Number(id)));
-  console.log('CITYYYYYYY', city);
+  // const city = useSelector((state) => selectCityById(state, Number(id)));
+  // console.log('CITYYYYYYY', city);
 
-  // useEffect(() => {
-  //   const getCity = async () => {
-  //     const destination = await getCityById(id);
-  //     setCity(destination);
-  //   };
-  //   getCity();
-  // }, [id]);
+  useEffect(() => {
+    const getCity = async () => {
+      const destination = await getCityById(id);
+      setCity(destination);
+    };
+    getCity();
+  }, [id]);
 
   if (!city) return <p>Loading city...</p>;
   return (

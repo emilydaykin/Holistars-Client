@@ -1,21 +1,49 @@
 .createHoliday {
+  position: absolute;
+  width: 100vw;
+  z-index: 1;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.636);
+  top: 0;
+  left: 0;
+  
+  &__container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
   &__title {
-    font-family: 'Handlee';
-    font-size: 2.5rem;
+    font-weight: 500;
+    font-size: 2rem;
     letter-spacing: 0.1rem;
-    padding-top: 2.2em;
-    padding-left: 0.8em;
+    margin-bottom: 0.5em;
+    text-align: center;
   }
 
-  &__form-wrapper {
-    margin: 2em 10em 0 10em;
-  }
+  &__go-back {
+    color: #b90000;
+    position: absolute;
+    font-size: 2rem;
+    top: 2.5%;
+    right: 3%;
+    transition: 0.2s ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.2);
+    }
+  } 
   
   &__form {
-    padding: 2.5em 3em;
+    background-color: #fff;
+    padding: 2.5em 5em;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
+    margin: 1.5em;
+    position: relative;
   }
 
   &__form-label {

@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import { scrapeSearch, scrapeCities } from '../api/scrape_api';
 import { addCity } from '../api/cities_api';
 import axios from 'axios';
+import { useLocation } from 'react-router-dom';
 
 const AddNewCity = () => {
+  const location = useLocation();
   const [searchResults, setSearchResults] = useState(null);
   const [searchInput, setSearchInput] = useState({
     city: '',
@@ -81,7 +83,7 @@ const AddNewCity = () => {
 
   return (
     <section className='addNewCity'>
-      <h1 className='addNewCity__title'>Add New City Component</h1>
+      <h1 className='addNewCity__title'>Search For Your Holiday Destination</h1>
       <div className='addNewCity__form-wrapper'>
         <div className={resultClicked ? 'addNewCity__city-clicked-popup' : 'hide'}>
           <p>
@@ -89,7 +91,10 @@ const AddNewCity = () => {
               ? `✅ Successfully added ${cityToAdd.city} to database!`
               : `⚠️ ${cityToAdd.city} already exists in the database`}
           </p>
-          <Link className='button addNewCity__city-clicked-popup--button' to={'/create-holiday'}>
+          <Link
+            className='button addNewCity__city-clicked-popup--button'
+            to={{ pathname: '/profile/3', state: { fromAddCity: true } }}
+          >
             Return to add holiday
           </Link>
         </div>

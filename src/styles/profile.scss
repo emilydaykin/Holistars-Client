@@ -16,8 +16,8 @@
   &__heading {
     font-weight: 600;
     font-size: 2rem;
+    margin: 0.5em 0 0.35em 0;
   }
-
 
   &__sub-title {
     padding: 0.5em 0 0.25em 0;
@@ -66,6 +66,7 @@
   }
 
   &__timeline-section {
+    // border: 2px solid blue;
     width: 62%;
     padding: 1em 2em;
     position: relative;
@@ -84,6 +85,7 @@
 
   &__timeline-container {
     position: relative;
+    border: 2px solid green;
   }
 
   &__timeline-row {
@@ -160,19 +162,23 @@
     transform: translateX(-50%);
 
     &--inner {
-      width: 20px;
-      height: 20px;
-      top: 15.5%;
+      width: 22px;
+      height: 22px;
+      top: 12.5%;
       left: 50%;
       background-color: #cdfdff;
     }
   }
 
   &__line {
-    width: 5px;
+    width: 4px;
+    // height: 100%;
     background-color: #000;
     position: absolute;
+    border-radius: 1.5px;
     top: 13%;
     left: 47.4%;
+    // top: 0;
+    // left: 0;
   }
 }

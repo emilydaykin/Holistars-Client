@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { selectAllCities } from '../features/cities/citiesSlice';
 import { useSelector } from 'react-redux';
 import { selectUserById } from '../features/users/usersSlice';
+import CreateHoliday from './CreateHoliday';
 
 const Profile = () => {
   const { id } = useParams();
@@ -14,6 +15,7 @@ const Profile = () => {
   const allCities = useSelector(selectAllCities);
   const user = useSelector((state) => selectUserById(state, Number(id)));
   const [orderedUserHolidays, setOrderedUserHolidays] = useState([]);
+  const [addHolidayClicked, setAddHolidayClicked] = useState(false);
 
   const prettifyDate = (dateString) => {
     const year = dateString.split('/')[1];
@@ -50,8 +52,21 @@ const Profile = () => {
     return allCities.find((city) => city.id === cityId);
   };
 
+  const handleAddHoliday = (e) => {
+    console.log('clicked');
+    setAddHolidayClicked(true);
+  };
+
   return (
     <section className='profile'>
+      {addHolidayClicked ? (
+        <CreateHoliday
+          addHolidayClicked={addHolidayClicked}
+          setAddHolidayClicked={setAddHolidayClicked}
+        />
+      ) : (
+        <></>
+      )}
       {/* <h1 className='profile__title'>Profile Page</h1> */}
       {!user || !orderedUserHolidays ? (
         <p></p>
@@ -92,11 +107,16 @@ const Profile = () => {
             </div>
           </div>
           <div className='profile__timeline-section'>
-            {/* <h1 className='profile__title'>My holidays</h1> */}
+            {/* <Link to={'/create-holiday'}> */}
+            <button className='button profile__add-holiday' onClick={handleAddHoliday}>
+              Add New Holiday
+            </button>
+
+            {/* </Link> */}
             <div className='profile_timeline-container'>
               <div
-                className={orderedUserHolidays.length > 1 ? 'profile__line' : 'hide'}
-                style={{ height: `${120 * orderedUserHolidays.length - 1}px` }}
+                className='profile__line'
+                style={{ height: `${25 * orderedUserHolidays.length - 1}%` }}
               ></div>
               {orderedUserHolidays.map((holiday) => (
                 <div key={holiday.id} className='profile__timeline-row'>
@@ -110,11 +130,11 @@ const Profile = () => {
                     <div className='profile__timeline-entry'>
                       <div
                         className='profile__holiday-image'
-                        style={{ backgroundImage: `url(${findCity(holiday.city).image})` }}
+                        style={{ backgroundImage: `url(${findCity(holiday.city)?.image})` }}
                       ></div>
                       <div className='profile__holiday-text'>
                         <p className='profile__destination'>
-                          {findCity(holiday.city).city}, {findCity(holiday.city).country}
+                          {findCity(holiday.city)?.city}, {findCity(holiday.city)?.country}
                         </p>
                         <p className='profile__date'>{prettifyDate(holiday.date)}</p>
                         <p className='profile__duration'>{holiday.duration}</p>
