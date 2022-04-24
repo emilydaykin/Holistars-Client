@@ -21,6 +21,10 @@ const Home = () => {
     getCityData();
   }, []);
 
+  const getCityAvgRating = city =>
+    city.reviews.reduce((total, review) => total + review.avg_rating, 0) /
+    city.reviews.length;
+
   const carouselSettings = {
     dots: true,
     autoplay: true,
@@ -56,7 +60,9 @@ const Home = () => {
             {cities.map(city => (
               <div key={city.id} className='home__carousel-item'>
                 <Link className='home__carousel-link' to={`/cities/${city.id}`}>
-                  <Stars value={3.5} />
+                  {city.reviews.length && (
+                    <Stars value={getCityAvgRating(city)} />
+                  )}
                   <img src={city.image} alt={city.city} />
                   <p className='home__carousel-text'>
                     {city.city}, {city.country}

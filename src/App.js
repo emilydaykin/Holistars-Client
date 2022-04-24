@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
@@ -30,7 +29,7 @@ const App = () => {
         <Route path='/users/:id' element={<SingleUser />} />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/review' element={<AddReview />} />
+        <Route path='/review/:cityId' element={<AddReview />} />
       </Routes>
     </BrowserRouter>
   );

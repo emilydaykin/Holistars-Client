@@ -6,11 +6,7 @@ import { selectUserById } from '../usersSlice';
 const SingleUser = () => {
   const { id } = useParams();
 
-  console.log(id);
-
   const user = useSelector(state => selectUserById(state, Number(id)));
-
-  console.log(user);
 
   return <div>SingleUser</div>;
 };

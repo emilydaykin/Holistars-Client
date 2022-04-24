@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { getCityById } from '../api/cities_api';
 import { selectCityById } from '../features/cities/citiesSlice';
 import { selectAllUsers } from '../features/users/usersSlice';
@@ -130,7 +130,7 @@ const SingleCity = () => {
               <p>No travellers yet. Be the first!</p>
             ) : (
               travellers.map(traveller => (
-                <div className='singleCity__traveller'>
+                <div className='singleCity__traveller' key={traveller.id}>
                   <div
                     className='singleCity__traveller-image'
                     style={{ backgroundImage: `url(${traveller.image})` }}
@@ -152,9 +152,10 @@ const SingleCity = () => {
       </div>
       <div className='singleCity__details singleCity__details--reviews-container'>
         <h3>Reviews of {city.city}</h3>
+        <Link to={`/review/${id}`}>Add a review</Link>
         <div className='singleCity__reviews'>
           {city.reviews.map(review => (
-            <div className='singleCity__review'>
+            <div key={review.id} className='singleCity__review'>
               <p>"{review.text}"</p>
               <div className='singleCity__review-ratings'>
                 <p>

@@ -1,11 +1,14 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 const AddReview = () => {
+  const { cityId } = useParams();
+  const userId = JSON.parse(sessionStorage.getItem('userInfo')).id;
   const [newReview, setNewReview] = useState({
     text: '',
-    user: 2,
-    city: 2,
+    user: userId,
+    city: Number(cityId),
     rating_food: 0,
     rating_weather: 0,
     rating_culture: 0,
@@ -22,7 +25,10 @@ const AddReview = () => {
   };
 
   const handleChange = e => {
-    setNewReview({ ...newReview, [e.target.name]: e.target.value });
+    setNewReview({
+      ...newReview,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const handleSubmit = e => {
