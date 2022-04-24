@@ -57,6 +57,8 @@ const Profile = () => {
     setAddHolidayClicked(true);
   };
 
+  console.log('orderedUserHolidays', orderedUserHolidays);
+
   return (
     <section className='profile'>
       {addHolidayClicked ? (
@@ -67,18 +69,15 @@ const Profile = () => {
       ) : (
         <></>
       )}
-      {/* <h1 className='profile__title'>Profile Page</h1> */}
       {!user || !orderedUserHolidays ? (
         <p></p>
       ) : (
         <div className='profile__container'>
           <div className='profile__info'>
-            <img
+            <div
               className='profile__profile-picture'
-              src={user.image}
-              alt='user profile image'
-              width='250px'
-            />
+              style={{ backgroundImage: `url(${user.image})` }}
+            ></div>
             <h2 className='profile__heading'>
               {user.first_name} {user.last_name}
             </h2>
@@ -125,7 +124,7 @@ const Profile = () => {
                   </div>
                   <Link
                     className='profile__timeline-entry-link'
-                    to={`/destinations/${holiday.city.id}`}
+                    to={`/destinations/${holiday.city}`}
                   >
                     <div className='profile__timeline-entry'>
                       <div

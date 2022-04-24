@@ -8,7 +8,9 @@ const Navbar = () => {
   const location = useLocation();
   const dispatch = useDispatch();
 
-  const userInfo = useSelector(state => state.userInfo.userInfo);
+  console.log('sessionStorage', sessionStorage);
+  const userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+  // const userInfo = useSelector((state) => state.userInfo.userInfo);
 
   const customNavbar = (location) => {
     // If path = home or singleCity, make navbar transparent:
@@ -35,12 +37,9 @@ const Navbar = () => {
           <Link className='header__nav-item' to={'/destinations'}>
             Destinations
           </Link>
-          <Link className='header__nav-item' to={'/profile/3'}>
-            Profile
-          </Link>
         </div>
         <div className='header__nav-right'>
-          {userInfo?.id ? (
+          {sessionStorage.userInfo || userInfo?.id ? (
             <>
               <Link
                 className='header__nav-item header__nav-item--pic'
@@ -50,7 +49,7 @@ const Navbar = () => {
                   className='header__nav-item-img'
                   src={userInfo.image}
                   alt={userInfo.user}
-                  style={{ height: '30px' }}
+                  style={{ height: '30px', width: '30px', objectFit: 'cover', borderRadius: '5px' }}
                 />
                 {userInfo.user}
               </Link>
