@@ -1,9 +1,9 @@
 import axios from 'axios';
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginUser } from '../../login/loginSlice';
 import { registerUser } from '../usersSlice';
 import { useNavigate } from 'react-router-dom';
-import { loginUser } from '../../../api/users_api';
 
 const AuthForm = ({ login }) => {
   const dispatch = useDispatch();
@@ -35,21 +35,13 @@ const AuthForm = ({ login }) => {
 
   const handleLogin = e => {
     e.preventDefault();
-    axios
-      .request({
-        method: 'POST',
-        url: 'http://localhost:8000/api/authentication/login/',
-        data: user,
-      })
-      .then(({ data }) => {
-        data.token
-          ? window.sessionStorage.setItem('token', data.token)
-          : window.sessionStorage.removeItem('token');
-
-        return data;
-      })
-      .catch(console.error);
-    navigate('/');
+    try {
+      dispatch(loginUser(JSON.stringify(user)));
+      navigate('/');
+    } catch (err) {
+      console.error(err);
+    }
+    setUser(initialLoginlUser);
   };
 
   const handleImage = async e => {
@@ -73,11 +65,10 @@ const AuthForm = ({ login }) => {
     };
   };
 
-  console.log(user);
-
   const handleRegister = e => {
     try {
       dispatch(registerUser(user));
+      console.log(user);
     } catch (err) {
       console.error('Failed to register user', err);
     }
@@ -85,7 +76,7 @@ const AuthForm = ({ login }) => {
 
   return (
     <div>
-      <form onSubmit={handleRegister}>
+      <form>
         {!login && (
           <div className='form-control'>
             <label htmlFor='username'>Username:</label>
@@ -155,7 +146,9 @@ const AuthForm = ({ login }) => {
             Login
           </button>
         ) : (
-          <button type='submit'>Register</button>
+          <button type='submit' onClick={handleRegister}>
+            Register
+          </button>
         )}
       </form>
       {previewSource && (
