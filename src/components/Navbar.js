@@ -1,16 +1,15 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../features/login/loginSlice';
 
 const Navbar = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  console.log('sessionStorage', sessionStorage);
-  const userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-  // const userInfo = useSelector((state) => state.userInfo.userInfo);
+  const userInfo = useSelector((state) => state.userInfo.userInfo);
 
   const customNavbar = (location) => {
     // If path = home or singleCity, make navbar transparent:
@@ -20,8 +19,11 @@ const Navbar = () => {
     }
   };
 
+  console.log('sessionStorage', sessionStorage);
+
   const handleLogout = () => {
     dispatch(logout());
+    navigate('/');
   };
 
   return (
@@ -39,7 +41,7 @@ const Navbar = () => {
           </Link>
         </div>
         <div className='header__nav-right'>
-          {sessionStorage.userInfo || userInfo?.id ? (
+          {userInfo?.id ? (
             <>
               <Link
                 className='header__nav-item header__nav-item--pic'
@@ -52,6 +54,24 @@ const Navbar = () => {
                   style={{ height: '30px', width: '30px', objectFit: 'cover', borderRadius: '5px' }}
                 />
                 {userInfo.user}
+              </Link>
+              <Link className='header__nav-item' to='#' onClick={handleLogout}>
+                Logout
+              </Link>
+            </>
+          ) : sessionStorage.getItem('userInfo') ? (
+            <>
+              <Link
+                className='header__nav-item header__nav-item--pic'
+                to={`/profile/${JSON.parse(sessionStorage.getItem('userInfo')).id}`}
+              >
+                <img
+                  className='header__nav-item-img'
+                  src={JSON.parse(sessionStorage.getItem('userInfo')).image}
+                  alt={JSON.parse(sessionStorage.getItem('userInfo')).user}
+                  style={{ height: '30px', width: '30px', objectFit: 'cover', borderRadius: '5px' }}
+                />
+                {JSON.parse(sessionStorage.getItem('userInfo')).user}
               </Link>
               <Link className='header__nav-item' to='#' onClick={handleLogout}>
                 Logout

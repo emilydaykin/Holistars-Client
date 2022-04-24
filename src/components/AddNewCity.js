@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import { scrapeSearch, scrapeCities } from '../api/scrape_api';
 import { addCity } from '../api/cities_api';
 import axios from 'axios';
-import { useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const AddNewCity = () => {
-  const location = useLocation();
+  const userInfo = useSelector((state) => state.userInfo.userInfo);
   const [searchResults, setSearchResults] = useState(null);
   const [searchInput, setSearchInput] = useState({
     city: '',
@@ -93,7 +93,7 @@ const AddNewCity = () => {
           </p>
           <Link
             className='button addNewCity__city-clicked-popup--button'
-            to={{ pathname: '/profile/3', state: { fromAddCity: true } }}
+            to={{ pathname: `/profile/${JSON.parse(userInfo)?.id}`, state: { fromAddCity: true } }}
           >
             Return to add holiday
           </Link>
