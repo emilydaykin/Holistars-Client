@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
@@ -13,11 +13,16 @@ import SingleUser from './features/users/pages/SingleUser';
 import Register from './features/users/pages/Register';
 import Login from './features/users/pages/Login';
 import AddReview from './features/reviews/pages/AddReview';
+import { useSelector } from 'react-redux';
 
 const App = () => {
+  const user = useSelector(state => state.userInfo);
+
+  // console.log(user);
+
   return (
     <BrowserRouter>
-      <Navbar />
+      <Navbar user={user.id} />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/about' element={<About />} />

@@ -1,9 +1,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import api from '../../api/users_api';
 
-const initialState = sessionStorage.getItem('userInfo')
-  ? JSON.parse(sessionStorage.getItem('userInfo'))
-  : {};
+const initialState = {
+  userInfo: sessionStorage.getItem('userInfo')
+    ? sessionStorage.getItem('userInfo')
+    : {},
+};
 
 export const loginUser = createAsyncThunk('login/loginUser', async user => {
   try {
