@@ -6,18 +6,33 @@
   left: 0;
   z-index: 1;
   
+  &__nav-right {
+    display: flex;
+    align-items: center;
+  }
+
   &__nav-item {
     padding: 0 1.25em;
     letter-spacing: 0.09rem;
     text-decoration: none;
     color: #fff;
+
+    &--pic {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &-img {
+      margin-right: 1em;
+    }
   }
 
   &__navbar {
     display: flex;
     justify-content: space-between;
     margin: 1.25em 0.6em;
-    
+    align-items: center;
   }
 }
 
