@@ -109,9 +109,17 @@
     width: 130px;
   }
 
+  &__traveller-link {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   &__traveller-image {
     height: 100px;
     width: 100px;
+    // border: 2px solid blue;
     margin-top: 0.25em;
     background-size: cover;
     background-repeat: no-repeat;

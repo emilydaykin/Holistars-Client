@@ -131,7 +131,7 @@ const SingleCity = () => {
             ) : (
               travellers.map((traveller) => (
                 <div key={traveller.id} className='singleCity__traveller'>
-                  <Link to={`/profile/${traveller.id}`} className='singleCity__traveller-name'>
+                  <Link to={`/profile/${traveller.id}`} className='singleCity__traveller-link'>
                     <div
                       className='singleCity__traveller-image'
                       style={{ backgroundImage: `url(${traveller.image})` }}
