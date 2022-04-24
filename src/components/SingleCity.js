@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { getCityById } from '../api/cities_api';
 import { selectCityById } from '../features/cities/citiesSlice';
 import { selectAllUsers } from '../features/users/usersSlice';
@@ -126,13 +126,15 @@ const SingleCity = () => {
             ) : (
               travellers.map((traveller) => (
                 <div className='singleCity__traveller'>
-                  <div
-                    className='singleCity__traveller-image'
-                    style={{ backgroundImage: `url(${traveller.image})` }}
-                  ></div>
-                  <div className='singleCity__traveller-name'>
-                    {traveller.first_name} {traveller.last_name}
-                  </div>
+                  <Link to={`/profile/${traveller.id}`} className='singleCity__traveller-name'>
+                    <div
+                      className='singleCity__traveller-image'
+                      style={{ backgroundImage: `url(${traveller.image})` }}
+                    ></div>
+                    <div className='singleCity__traveller-name'>
+                      {traveller.first_name} {traveller.last_name}
+                    </div>
+                  </Link>
                   <button
                     className='button singleCity__follow-traveller'
                     onClick={() => followUser(traveller.id)}
@@ -148,29 +150,33 @@ const SingleCity = () => {
       <div className='singleCity__details singleCity__details--reviews-container'>
         <h3>Reviews of {city.city}</h3>
         <div className='singleCity__reviews'>
-          {city.reviews.map((review) => (
-            <div className='singleCity__review'>
-              <p>"{review.text}"</p>
-              <div className='singleCity__review-ratings'>
+          {city.reviews ? (
+            <p>No reviews for {city.city}. Be the first to leave one!</p>
+          ) : (
+            city.reviews.map((review) => (
+              <div className='singleCity__review'>
+                <p>"{review.text}"</p>
+                <div className='singleCity__review-ratings'>
+                  <p>
+                    Food <span>{getStars(review.rating_food)}</span>
+                  </p>
+                  <p>
+                    Weather <span>{getStars(review.rating_weather)}</span>
+                  </p>
+                  <p>
+                    Culture <span>{getStars(review.rating_culture)}</span>
+                  </p>
+                </div>
                 <p>
-                  Food <span>{getStars(review.rating_food)}</span>
-                </p>
-                <p>
-                  Weather <span>{getStars(review.rating_weather)}</span>
-                </p>
-                <p>
-                  Culture <span>{getStars(review.rating_culture)}</span>
+                  <span className='singleCity__reviewer'>
+                    {getUserDetails(review.user).first_name} {getUserDetails(review.user).last_name}
+                  </span>
+                  &emsp;~&emsp;
+                  <span className='singleCity__review-date'>{review.created_date}</span>
                 </p>
               </div>
-              <p>
-                <span className='singleCity__reviewer'>
-                  {getUserDetails(review.user).first_name} {getUserDetails(review.user).last_name}
-                </span>
-                &emsp;~&emsp;
-                <span className='singleCity__review-date'>{review.created_date}</span>
-              </p>
-            </div>
-          ))}
+            ))
+          )}
         </div>
       </div>
     </section>

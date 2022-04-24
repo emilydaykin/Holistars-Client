@@ -39,6 +39,11 @@
   &__profile-picture {
     border: 5px solid #000;
     border-radius: 20px;
+    width: 250px;
+    height: 250px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
   }
 
   &__follows {
@@ -172,13 +177,10 @@
 
   &__line {
     width: 4px;
-    // height: 100%;
     background-color: #000;
     position: absolute;
     border-radius: 1.5px;
     top: 13%;
     left: 47.4%;
-    // top: 0;
-    // left: 0;
   }
 }

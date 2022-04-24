@@ -36,7 +36,6 @@
 
   &__subtitle {
     font-family: 'Handlee';
-    // font-weight: bold;
     font-size: 1.75rem;
     text-transform: uppercase;
     letter-spacing: 0.1rem;
@@ -44,7 +43,6 @@
   }
 
   &__creators {
-    // border: 2px solid blue;
     display: flex;
     justify-content: center;
     // align-items: center;
@@ -64,7 +62,6 @@
   &__image {
     width: 90%;
     height: 200px;
-    // padding: 2em;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     background-size: cover;
@@ -97,6 +94,5 @@
     color: grey;
     font-size: 0.85rem;
     text-align: justify;
-    // padding: 0 0.5em;
   }
 }
