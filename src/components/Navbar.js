@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../features/login/loginSlice';
 
 const Navbar = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const userInfo = useSelector((state) => state.userInfo.userInfo);
@@ -18,9 +19,11 @@ const Navbar = () => {
     }
   };
 
+  console.log('sessionStorage', sessionStorage);
+
   const handleLogout = () => {
     dispatch(logout());
-    // sessionStorage.removeItem('userInfo');
+    navigate('/');
   };
 
   return (

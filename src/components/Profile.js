@@ -46,7 +46,7 @@ const Profile = () => {
       setOrderedUserHolidays(orderedHolidays);
     };
     orderHolidaysByDate();
-  }, [id, user?.holidays]);
+  }, [id, user, user?.holidays]);
 
   const findCity = (cityId) => {
     return allCities.find((city) => city.id === cityId);

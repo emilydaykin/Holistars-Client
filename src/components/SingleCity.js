@@ -5,23 +5,32 @@ import { getCityById } from '../api/cities_api';
 import { selectCityById } from '../features/cities/citiesSlice';
 import { selectAllUsers } from '../features/users/usersSlice';
 import { selectUserById } from '../features/users/usersSlice';
+import { useLocation } from 'react-router-dom';
 
 const SingleCity = () => {
+  // const location = useLocation();
   const [travellersDivHeight, setTravellersDivHeight] = useState(0);
   const [city, setCity] = useState(null);
   const [travellers, setTravellers] = useState([]);
+  const userInfo = useSelector((state) => state.userInfo.userInfo);
 
-  console.log('CITY', city);
+  // const [userInfo, setUserInfo] = useState(null);
+
+  // useEffect(() => {
+  //   setUserInfo(sessionStorage.getItem('userInfo'));
+  // }, []);
+
+  console.log('USERINFO', userInfo);
 
   const { id } = useParams(); // city id
   const users = useSelector(selectAllUsers);
   const detailsContainers = useRef(null);
   // console.log('id', id);
-  console.log('USERS', users);
+  // console.log('USERS', users);
 
   const getUserDetails = (userId) => users.find((user) => Number(user.id) === Number(userId));
 
-  console.log('CITYYY', city);
+  // console.log('CITYYY', city);
 
   useEffect(() => {
     const getHeight = () => {
@@ -62,7 +71,11 @@ const SingleCity = () => {
 
   const followUser = (travellerID) => {
     console.log('Follow button CLICKED!');
-    console.log(`User ID: ${travellerID}`);
+    console.log(`User (being followed) ID: ${travellerID}`); // user being followed!
+    if (userInfo) {
+      const follower = userInfo.id;
+      console.log(`User (follower) ID: ${follower}`);
+    }
   };
 
   function getStars(rating) {
@@ -111,7 +124,9 @@ const SingleCity = () => {
             <h3>Top 3 Attactions</h3>
             <p className='singleCity__attractions-wrapper'>
               {city.top_3_attractions.map((attraction) => (
-                <span className='singleCity__attractions'>{attraction}</span>
+                <span key={attraction} className='singleCity__attractions'>
+                  {attraction}
+                </span>
               ))}
             </p>
           </div>
@@ -127,7 +142,7 @@ const SingleCity = () => {
               <p>No travellers yet. Be the first!</p>
             ) : (
               travellers.map((traveller) => (
-                <div className='singleCity__traveller'>
+                <div key={traveller.id} className='singleCity__traveller'>
                   <Link to={`/profile/${traveller.id}`} className='singleCity__traveller-name'>
                     <div
                       className='singleCity__traveller-image'
@@ -137,12 +152,14 @@ const SingleCity = () => {
                       {traveller.first_name} {traveller.last_name}
                     </div>
                   </Link>
-                  <button
-                    className='button singleCity__follow-traveller'
-                    onClick={() => followUser(traveller.id)}
-                  >
-                    Follow
-                  </button>
+                  {Object.keys(userInfo).length !== 0 && (
+                    <button
+                      className='button singleCity__follow-traveller'
+                      onClick={() => followUser(traveller.id)}
+                    >
+                      Follow
+                    </button>
+                  )}
                 </div>
               ))
             )}
@@ -156,7 +173,7 @@ const SingleCity = () => {
             <p>No reviews for {city.city}. Be the first to leave one!</p>
           ) : (
             city.reviews.map((review) => (
-              <div className='singleCity__review'>
+              <div key={review.id} className='singleCity__review'>
                 <p>"{review.text}"</p>
                 <div className='singleCity__review-ratings'>
                   <p>
@@ -171,7 +188,8 @@ const SingleCity = () => {
                 </div>
                 <p>
                   <span className='singleCity__reviewer'>
-                    {getUserDetails(review.user).first_name} {getUserDetails(review.user).last_name}
+                    {getUserDetails(review.user)?.first_name}
+                    {getUserDetails(review.user)?.last_name}
                   </span>
                   &emsp;~&emsp;
                   <span className='singleCity__review-date'>{review.created_date}</span>
