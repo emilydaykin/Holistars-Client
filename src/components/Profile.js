@@ -10,7 +10,7 @@ import CreateHoliday from './CreateHoliday';
 
 const Profile = () => {
   const { id } = useParams();
-  console.log('ID', id);
+  // console.log('ID', id);
 
   const allCities = useSelector(selectAllCities);
   const user = useSelector((state) => selectUserById(state, Number(id)));
@@ -39,7 +39,7 @@ const Profile = () => {
 
   useEffect(() => {
     const orderHolidaysByDate = () => {
-      console.log('orderhols');
+      // console.log('orderhols');
       const orderedHolidays = user?.holidays
         .slice()
         .sort((a, b) => new Date(prettifyDate(b.date)) - new Date(prettifyDate(a.date)));
@@ -57,7 +57,7 @@ const Profile = () => {
     setAddHolidayClicked(true);
   };
 
-  console.log('orderedUserHolidays', orderedUserHolidays);
+  // console.log('orderedUserHolidays', orderedUserHolidays);
 
   return (
     <section className='profile'>

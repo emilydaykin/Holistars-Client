@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -18,8 +18,6 @@ const Navbar = () => {
       return true;
     }
   };
-
-  console.log('sessionStorage', sessionStorage);
 
   const handleLogout = () => {
     dispatch(logout());
