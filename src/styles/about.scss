@@ -1,0 +1,102 @@
+.about {
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__container {
+    border: 4px solid #fff;
+    background-color: rgba(255, 255, 255, 0.9);
+    margin: 3em 4em;
+    margin-top: 7em;
+    padding: 2em;
+    border-radius: 20px;
+  }
+
+  &__title {
+    font-family: 'Handlee';
+    font-size: 2.5rem;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+  }
+
+  &__emphasis {
+    font-weight: 500;
+    letter-spacing: 0.05rem;
+    color: purple;
+    display: flex;
+    justify-content: center;
+    padding: 0.75em 0 1em 0;
+  }
+
+
+
+  &__subtitle {
+    font-family: 'Handlee';
+    // font-weight: bold;
+    font-size: 1.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    margin-bottom: 0;
+  }
+
+  &__creators {
+    // border: 2px solid blue;
+    display: flex;
+    justify-content: center;
+    // align-items: center;
+    // flex-grow: 1;
+  }
+
+  &__creator {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    width: 225px;
+    padding: 2em;
+    padding-top: 2.5em;
+    align-items: center;
+  }
+
+  &__image {
+    width: 90%;
+    height: 200px;
+    // padding: 2em;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  &__creator-text {
+    padding: 1.5em 1.75em 0 1.75em;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  &__name {
+    text-align: center;
+  }
+
+  &__links {
+    display: flex;
+    justify-content: center;
+    padding: 0.5em 0;
+
+    a {
+      margin: 0 0.25em;
+    }
+  }
+
+  &__description {
+    color: grey;
+    font-size: 0.85rem;
+    text-align: justify;
+    // padding: 0 0.5em;
+  }
+}
