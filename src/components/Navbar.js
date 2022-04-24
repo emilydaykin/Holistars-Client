@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -8,8 +8,7 @@ const Navbar = () => {
   const location = useLocation();
   const dispatch = useDispatch();
 
-  const userInfo = useSelector(state => state.userInfo);
-  console.log(userInfo);
+  const userInfo = useSelector(state => state.userInfo.userInfo);
 
   const customNavbar = location => {
     // If path = home or singleCity, make navbar transparent:
@@ -49,12 +48,9 @@ const Navbar = () => {
           </Link>
         </div>
         <div className='header__nav-right'>
-          {userInfo.id ? (
+          {userInfo?.id ? (
             <>
-              <Link
-                className='header__nav-item'
-                to={`/profile/${userInfo.id}`}
-              >
+              <Link className='header__nav-item' to={`/profile/${userInfo.id}`}>
                 <img
                   src={userInfo.image}
                   alt={userInfo.user}
@@ -76,7 +72,6 @@ const Navbar = () => {
               </Link>
             </>
           )}
-
         </div>
       </nav>
     </header>
