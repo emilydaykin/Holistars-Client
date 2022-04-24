@@ -21,6 +21,8 @@ const SingleCity = () => {
 
   const getUserDetails = (userId) => users.find((user) => Number(user.id) === Number(userId));
 
+  console.log('CITYYY', city);
+
   useEffect(() => {
     const getHeight = () => {
       const childNodesHeight =
@@ -150,7 +152,7 @@ const SingleCity = () => {
       <div className='singleCity__details singleCity__details--reviews-container'>
         <h3>Reviews of {city.city}</h3>
         <div className='singleCity__reviews'>
-          {city.reviews ? (
+          {city.reviews.length === 0 ? (
             <p>No reviews for {city.city}. Be the first to leave one!</p>
           ) : (
             city.reviews.map((review) => (
