@@ -50,8 +50,12 @@ const Navbar = () => {
         <div className='header__nav-right'>
           {userInfo?.id ? (
             <>
-              <Link className='header__nav-item' to={`/profile/${userInfo.id}`}>
+              <Link
+                className='header__nav-item header__nav-item--pic'
+                to={`/profile/${userInfo.id}`}
+              >
                 <img
+                  className='header__nav-item-img'
                   src={userInfo.image}
                   alt={userInfo.user}
                   style={{ height: '30px' }}
