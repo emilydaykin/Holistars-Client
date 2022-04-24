@@ -19,14 +19,16 @@ const SingleCity = () => {
   // console.log('id', id);
   console.log('USERS', users);
 
-  const getUserDetails = (userId) => users.find((user) => Number(user.id) === Number(userId));
+  const getUserDetails = userId =>
+    users.find(user => Number(user.id) === Number(userId));
 
   useEffect(() => {
     const getHeight = () => {
       const childNodesHeight =
         detailsContainers.current &&
         [...detailsContainers.current.childNodes].reduce(
-          (prevElement, current) => prevElement + current.getBoundingClientRect().height,
+          (prevElement, current) =>
+            prevElement + current.getBoundingClientRect().height,
           0
         );
       setTravellersDivHeight(childNodesHeight + 17); // 1.5em
@@ -38,8 +40,11 @@ const SingleCity = () => {
   useEffect(() => {
     const getCityTravellers = () => {
       /** Users who've been to this city */
-      const filteredTravellers = users.filter((user) => {
-        return user.holidays.filter((hol) => Number(hol.city) === Number(id)).length > 0;
+      const filteredTravellers = users.filter(user => {
+        return (
+          user.holidays.filter(hol => Number(hol.city) === Number(id)).length >
+          0
+        );
       });
       setTravellers(filteredTravellers);
     };
@@ -58,7 +63,7 @@ const SingleCity = () => {
 
   // console.log('travellersDivHeight', travellersDivHeight);
 
-  const followUser = (travellerID) => {
+  const followUser = travellerID => {
     console.log('Follow button CLICKED!');
     console.log(`User ID: ${travellerID}`);
   };
@@ -86,7 +91,7 @@ const SingleCity = () => {
     <section
       className='singleCity'
       style={{
-        backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.1)), url(${city.image})`
+        backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.1)), url(${city.image})`,
       }}
     >
       <div className='singleCity__geography'>
@@ -108,7 +113,7 @@ const SingleCity = () => {
           <div className='singleCity__details singleCity__details--attractions'>
             <h3>Top 3 Attactions</h3>
             <p className='singleCity__attractions-wrapper'>
-              {city.top_3_attractions.map((attraction) => (
+              {city.top_3_attractions.map(attraction => (
                 <span className='singleCity__attractions'>{attraction}</span>
               ))}
             </p>
@@ -124,7 +129,7 @@ const SingleCity = () => {
             {travellers.length === 0 ? (
               <p>No travellers yet. Be the first!</p>
             ) : (
-              travellers.map((traveller) => (
+              travellers.map(traveller => (
                 <div className='singleCity__traveller'>
                   <div
                     className='singleCity__traveller-image'
@@ -148,7 +153,7 @@ const SingleCity = () => {
       <div className='singleCity__details singleCity__details--reviews-container'>
         <h3>Reviews of {city.city}</h3>
         <div className='singleCity__reviews'>
-          {city.reviews.map((review) => (
+          {city.reviews.map(review => (
             <div className='singleCity__review'>
               <p>"{review.text}"</p>
               <div className='singleCity__review-ratings'>
@@ -164,10 +169,13 @@ const SingleCity = () => {
               </div>
               <p>
                 <span className='singleCity__reviewer'>
-                  {getUserDetails(review.user).first_name} {getUserDetails(review.user).last_name}
+                  {getUserDetails(review.user).first_name}{' '}
+                  {getUserDetails(review.user).last_name}
                 </span>
                 &emsp;~&emsp;
-                <span className='singleCity__review-date'>{review.created_date}</span>
+                <span className='singleCity__review-date'>
+                  {review.created_date}
+                </span>
               </p>
             </div>
           ))}
