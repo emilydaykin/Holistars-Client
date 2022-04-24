@@ -2,35 +2,23 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { getCityById } from '../api/cities_api';
-import { selectCityById } from '../features/cities/citiesSlice';
 import { selectAllUsers } from '../features/users/usersSlice';
-import { selectUserById } from '../features/users/usersSlice';
-import { useLocation } from 'react-router-dom';
+import { followTraveller } from '../api/followers_api';
 
 const SingleCity = () => {
-  // const location = useLocation();
   const [travellersDivHeight, setTravellersDivHeight] = useState(0);
   const [city, setCity] = useState(null);
   const [travellers, setTravellers] = useState([]);
-  const userInfo = useSelector((state) => state.userInfo.userInfo);
+  const loggedInUser = useSelector((state) => state.userInfo.userInfo);
+  const userInfo = typeof loggedInUser === 'string' ? JSON.parse(loggedInUser) : loggedInUser;
 
-  // const [userInfo, setUserInfo] = useState(null);
-
-  // useEffect(() => {
-  //   setUserInfo(sessionStorage.getItem('userInfo'));
-  // }, []);
-
-  console.log('USERINFO', userInfo);
+  // console.log('USERINFO', userInfo);
 
   const { id } = useParams(); // city id
   const users = useSelector(selectAllUsers);
   const detailsContainers = useRef(null);
-  // console.log('id', id);
-  // console.log('USERS', users);
 
   const getUserDetails = (userId) => users.find((user) => Number(user.id) === Number(userId));
-
-  // console.log('CITYYY', city);
 
   useEffect(() => {
     const getHeight = () => {
@@ -57,8 +45,6 @@ const SingleCity = () => {
     getCityTravellers();
   }, [id, users]);
 
-  // console.log('TRAVELLERS', travellers);
-
   useEffect(() => {
     const getCity = async () => {
       const destination = await getCityById(id);
@@ -67,14 +53,16 @@ const SingleCity = () => {
     getCity();
   }, [id]);
 
-  // console.log('travellersDivHeight', travellersDivHeight);
-
   const followUser = (travellerID) => {
     console.log('Follow button CLICKED!');
     console.log(`User (being followed) ID: ${travellerID}`); // user being followed!
     if (userInfo) {
       const follower = userInfo.id;
       console.log(`User (follower) ID: ${follower}`);
+      followTraveller({
+        user: travellerID,
+        follower: follower
+      });
     }
   };
 
