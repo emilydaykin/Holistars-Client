@@ -1,16 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../features/login/loginSlice';
 
-const Navbar = ({ user }) => {
+const Navbar = () => {
   const location = useLocation();
   const dispatch = useDispatch();
 
   const userInfo = useSelector(state => state.userInfo.userInfo);
-
-  console.log(user);
 
   const customNavbar = location => {
     // If path = home or singleCity, make navbar transparent:
