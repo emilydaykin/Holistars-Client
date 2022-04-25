@@ -165,6 +165,8 @@
 
   &__reviews {
       display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
   }
 
   &__review {
@@ -175,10 +177,13 @@
     flex-direction: column;
     padding: 0.5em 1em;
     margin: 1em;
+    max-width: 350px;
   }
 
   &__review-ratings {
     display: flex;
+    justify-content: center;
+    align-items: center;
 
     p {
       // margin: 0;
