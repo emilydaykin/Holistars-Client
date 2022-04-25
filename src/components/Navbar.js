@@ -10,12 +10,15 @@ const Navbar = () => {
   const dispatch = useDispatch();
 
   const userInfo = useSelector((state) => state.userInfo.userInfo);
+  // console.log('userInfo', userInfo);
 
   const customNavbar = (location) => {
-    // If path = home or singleCity, make navbar transparent:
+    // If path = home (logged out) or singleCity, make navbar transparent:
     const pathElements = location.split('/');
-    if (location === '/' || (pathElements.length === 3 && pathElements[1] === 'destinations')) {
+    if (pathElements.length === 3 && pathElements[1] === 'destinations') {
       return true;
+    } else if (location === '/') {
+      return Object.keys(userInfo).length === 0 ? true : false;
     }
   };
 
