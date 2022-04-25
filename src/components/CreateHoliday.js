@@ -60,7 +60,6 @@ const CreateHoliday = ({ addHolidayClicked, setAddHolidayClicked }) => {
       setAddHolidayClicked(false);
       navigate(`/profile/${JSON.parse(userInfo)?.id}`);
       window.location.reload(true);
-      // navigate(-1);
     }
   };
 

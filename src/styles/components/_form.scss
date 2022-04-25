@@ -3,19 +3,17 @@ input, textarea, select, option {
   font-size: inherit;
 }
 
-
-
 .form {
   background-color: #fff;
   padding: 2.5em 5em;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  margin: 1.5em;
+  // margin: 1.5em;
   position: relative;
 
   .textarea {
-    height: 15em;
+    height: 10em;
   }
 
   .button {
@@ -28,7 +26,7 @@ input, textarea, select, option {
   }
 
   &__register, &__review {
-    width: 95%;
+    // width: 100%;
     max-width: 900px;
     margin-inline: auto;
 
@@ -46,6 +44,14 @@ input, textarea, select, option {
       > * + * {
         margin-left: 1em;
       }
+    }
+  }
+
+  &__register {
+    display: flex;
+
+    :last-child {
+      align-self: center;
     }
   }
 }
