@@ -34,7 +34,7 @@ const AddReview = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post('http://localhost:8000/api/review/create/', newReview, {
+      .post(`${process.env.REACT_APP_API_URL}/review/create/`, newReview, {
         headers: {
           Authorization: `Bearer ${token}`
         }

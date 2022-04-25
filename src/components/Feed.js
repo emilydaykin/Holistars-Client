@@ -9,7 +9,7 @@ const Feed = () => {
   const [orderedReviews, setOrderedReviews] = useState(null);
   console.log('ALLCITIES', allCities);
 
-  const reviewedCities = allCities.filter(city => city.reviews.length > 0);
+  const reviewedCities = allCities.filter((city) => city.reviews.length > 0);
   console.log('REVIEWED', reviewedCities);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ const Feed = () => {
     orderReviewsByDate();
   }, [allCities]);
 
-  console.log('orderedReviews', orderedReviews);
+  // console.log('orderedReviews', orderedReviews);
 
   return (
     <section className='feed'>
@@ -35,7 +35,7 @@ const Feed = () => {
         <p>Loading Feed...</p>
       ) : (
         <div className='feed__feed-container'>
-          {orderedReviews.map(city => (
+          {orderedReviews.map((city) => (
             <Link
               className='feed__reviewed-city-link'
               key={city.id}
@@ -52,12 +52,8 @@ const Feed = () => {
                   </p>
                 </div>
                 <div className='feed__city-review'>
-                  <p>
-                    "&nbsp;{city.reviews[city.reviews.length - 1].text}&nbsp;"
-                  </p>
-                  <Stars
-                    value={city.reviews[city.reviews.length - 1].avg_rating}
-                  />
+                  <p>"&nbsp;{city.reviews[city.reviews.length - 1].text}&nbsp;"</p>
+                  <Stars value={city.reviews[city.reviews.length - 1].avg_rating} />
                 </div>
               </div>
             </Link>
