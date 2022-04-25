@@ -86,7 +86,7 @@ const Cities = () => {
                 ></div>
                 <div className='cities__city-text'>
                   <p className='cities__city-name'>{city.city}</p>
-                  <p>
+                  <div>
                     <span className='cities__country-name'>{city.country}</span>
                     ,&ensp;
                     <span
@@ -103,7 +103,7 @@ const Cities = () => {
                     ) : (
                       ''
                     )}
-                  </p>
+                  </div>
                 </div>
               </div>
             </Link>

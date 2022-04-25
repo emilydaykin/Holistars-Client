@@ -4,10 +4,9 @@ import { useParams } from 'react-router-dom';
 
 const AddReview = () => {
   const { cityId } = useParams();
-  const userId = JSON.parse(sessionStorage.getItem('userInfo')).id;
+  const token = JSON.parse(sessionStorage.getItem('userInfo')).token;
   const [newReview, setNewReview] = useState({
     text: '',
-    user: userId,
     city: Number(cityId),
     rating_food: 0,
     rating_weather: 0,
@@ -34,7 +33,11 @@ const AddReview = () => {
   const handleSubmit = e => {
     e.preventDefault();
     axios
-      .post('http://localhost:8000/api/review/create/', newReview)
+      .post('http://localhost:8000/api/review/create/', newReview, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then(({ data }) => console.log(data))
       .catch(console.error);
   };
