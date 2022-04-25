@@ -11,7 +11,7 @@ const AuthForm = ({ login }) => {
 
   const initialLoginlUser = {
     email: '',
-    password: '',
+    password: ''
   };
 
   const initialRegisterlUser = {
@@ -20,20 +20,18 @@ const AuthForm = ({ login }) => {
     password: '',
     password_confirmation: '',
     image: '',
-    bio: '',
+    bio: ''
   };
 
-  const [user, setUser] = useState(
-    login ? initialLoginlUser : initialRegisterlUser
-  );
+  const [user, setUser] = useState(login ? initialLoginlUser : initialRegisterlUser);
 
   const [previewSource, setPreviewSource] = useState();
 
-  const handleFormChange = e => {
+  const handleFormChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
-  const handleLogin = e => {
+  const handleLogin = (e) => {
     e.preventDefault();
     try {
       dispatch(loginUser(JSON.stringify(user)));
@@ -44,7 +42,7 @@ const AuthForm = ({ login }) => {
     setUser(initialLoginlUser);
   };
 
-  const handleImage = async e => {
+  const handleImage = async (e) => {
     const image = e.target.files[0];
     previewImage(image);
     const formData = new FormData();
@@ -57,7 +55,7 @@ const AuthForm = ({ login }) => {
     setUser({ ...user, image: data.url });
   };
 
-  const previewImage = image => {
+  const previewImage = (image) => {
     const reader = new FileReader();
     reader.readAsDataURL(image);
     reader.onload = () => {
@@ -65,7 +63,7 @@ const AuthForm = ({ login }) => {
     };
   };
 
-  const handleRegister = e => {
+  const handleRegister = (e) => {
     e.preventDefault();
     try {
       dispatch(registerUser(user));
@@ -132,13 +130,7 @@ const AuthForm = ({ login }) => {
             </div>
             <div className='form-control'>
               <label htmlFor='image'>Image:</label>
-              <input
-                className='input'
-                type='file'
-                id='image'
-                name='image'
-                onChange={handleImage}
-              />
+              <input className='input' type='file' id='image' name='image' onChange={handleImage} />
             </div>
             {previewSource && (
               <img
@@ -147,7 +139,7 @@ const AuthForm = ({ login }) => {
                   height: '300px',
                   width: '300px',
                   marginInline: 'auto',
-                  borderRadius: '10px',
+                  borderRadius: '10px'
                 }}
                 alt=''
               />

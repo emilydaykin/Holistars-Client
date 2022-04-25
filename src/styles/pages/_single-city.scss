@@ -86,12 +86,14 @@
 
     &--reviews-container {
       margin: 0 2em;
-      // margin-top: 0;
+
+      h3 {
+        margin-bottom: 1em;
+      }
     }
   }
 
   &__travellers {
-    // border: 2px solid green;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -119,7 +121,6 @@
   &__traveller-image {
     height: 100px;
     width: 100px;
-    // border: 2px solid blue;
     margin-top: 0.25em;
     background-size: cover;
     background-repeat: no-repeat;
@@ -186,13 +187,11 @@
     align-items: center;
 
     p {
-      // margin: 0;
       display: flex;
       font-family: 'Handlee';
       font-size: 1.1rem;
       font-weight: bold;
       flex-direction: column;
-      // border: 2px solid blue;
       margin: 0 0.5em;
       text-align: center;
     }
