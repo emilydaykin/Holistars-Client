@@ -52,7 +52,7 @@ const AddReview = () => {
         {token ? (
           <form onSubmit={handleSubmit} className='form form__review'>
             <div className='form-control'>
-              <label htmlFor='text'>Your thoughs:</label>
+              <label htmlFor='text'>Your thoughts:</label>
               <textarea
                 className='input textarea'
                 name='text'
@@ -61,7 +61,7 @@ const AddReview = () => {
               ></textarea>
             </div>
             <div className='form-control ratings'>
-              <label htmlFor='review-text'>Your thoughs:</label>
+              <label htmlFor='review-text'>Rate Food:</label>
               <select
                 name='rating_food'
                 id='rating_food'
@@ -69,6 +69,7 @@ const AddReview = () => {
               >
                 {addRating()}
               </select>
+              <label htmlFor='review-text'>Rate Weather:</label>
               <select
                 name='rating_weather'
                 id='rating_weather'
@@ -76,6 +77,7 @@ const AddReview = () => {
               >
                 {addRating()}
               </select>
+              <label htmlFor='review-text'>Rate Culture:</label>
               <select
                 name='rating_culture'
                 id='rating_culture'
