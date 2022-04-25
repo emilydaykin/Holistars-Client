@@ -109,9 +109,17 @@
     width: 130px;
   }
 
+  &__traveller-link {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   &__traveller-image {
     height: 100px;
     width: 100px;
+    // border: 2px solid blue;
     margin-top: 0.25em;
     background-size: cover;
     background-repeat: no-repeat;
@@ -157,6 +165,8 @@
 
   &__reviews {
       display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
   }
 
   &__review {
@@ -167,10 +177,13 @@
     flex-direction: column;
     padding: 0.5em 1em;
     margin: 1em;
+    max-width: 350px;
   }
 
   &__review-ratings {
     display: flex;
+    justify-content: center;
+    align-items: center;
 
     p {
       // margin: 0;
