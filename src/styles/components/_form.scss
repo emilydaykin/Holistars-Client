@@ -1,3 +1,24 @@
+input, textarea, select, option {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+
+
+.form {
+  background-color: #fff;
+  padding: 2.5em 5em;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  margin: 1.5em;
+  position: relative;
+
+  .button {
+    font-size: 1.2rem;
+  }
+}
+
 .input {
   font-family: inherit;
   padding: 1em 1.5em;
