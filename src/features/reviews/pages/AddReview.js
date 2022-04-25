@@ -5,13 +5,13 @@ import { useParams, useNavigate } from 'react-router-dom';
 const AddReview = () => {
   const { cityId } = useParams();
   const navigate = useNavigate();
-  const token = JSON.parse(sessionStorage.getItem('userInfo')).token;
+  const token = JSON.parse(sessionStorage.getItem('userInfo'))?.token;
   const [newReview, setNewReview] = useState({
     text: '',
     city: Number(cityId),
     rating_food: 0,
     rating_weather: 0,
-    rating_culture: 0,
+    rating_culture: 0
   });
 
   const addRating = () => {
@@ -24,20 +24,20 @@ const AddReview = () => {
       ));
   };
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setNewReview({
       ...newReview,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     axios
       .post('http://localhost:8000/api/review/create/', newReview, {
         headers: {
-          Authorization: `Bearer ${token}`,
-        },
+          Authorization: `Bearer ${token}`
+        }
       })
       .then(() => navigate(-1))
       .catch(console.error);
@@ -62,27 +62,15 @@ const AddReview = () => {
             </div>
             <div className='form-control ratings'>
               <label htmlFor='review-text'>Rate Food:</label>
-              <select
-                name='rating_food'
-                id='rating_food'
-                onChange={handleChange}
-              >
+              <select name='rating_food' id='rating_food' onChange={handleChange}>
                 {addRating()}
               </select>
               <label htmlFor='review-text'>Rate Weather:</label>
-              <select
-                name='rating_weather'
-                id='rating_weather'
-                onChange={handleChange}
-              >
+              <select name='rating_weather' id='rating_weather' onChange={handleChange}>
                 {addRating()}
               </select>
               <label htmlFor='review-text'>Rate Culture:</label>
-              <select
-                name='rating_culture'
-                id='rating_culture'
-                onChange={handleChange}
-              >
+              <select name='rating_culture' id='rating_culture' onChange={handleChange}>
                 {addRating()}
               </select>
             </div>
