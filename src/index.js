@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import App from './App';
 import { store } from './app/store';
 import { Provider } from 'react-redux';
@@ -11,11 +11,12 @@ import './styles/main.scss';
 store.dispatch(fetchUsers());
 store.dispatch(fetchCities());
 
-ReactDOM.render(
+const root = createRoot(document.getElementById('root'));
+
+root.render(
   <React.StrictMode>
     <Provider store={store}>
       <App />
     </Provider>
-  </React.StrictMode>,
-  document.getElementById('root')
+  </React.StrictMode>
 );
