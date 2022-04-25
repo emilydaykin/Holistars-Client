@@ -115,7 +115,7 @@ const Profile = () => {
             <div className='profile_timeline-container'>
               <div
                 className='profile__line'
-                style={{ height: `${25 * orderedUserHolidays.length - 1}%` }}
+                style={{ height: `${30 * orderedUserHolidays.length - 1}%` }}
               ></div>
               {orderedUserHolidays.map((holiday) => (
                 <div key={holiday.id} className='profile__timeline-row'>
