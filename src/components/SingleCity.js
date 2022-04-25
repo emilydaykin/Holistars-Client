@@ -9,8 +9,9 @@ const SingleCity = () => {
   const [travellersDivHeight, setTravellersDivHeight] = useState(0);
   const [city, setCity] = useState(null);
   const [travellers, setTravellers] = useState([]);
-  const loggedInUser = useSelector((state) => state.userInfo.userInfo);
-  const userInfo = typeof loggedInUser === 'string' ? JSON.parse(loggedInUser) : loggedInUser;
+  const loggedInUser = useSelector(state => state.userInfo.userInfo);
+  const userInfo =
+    typeof loggedInUser === 'string' ? JSON.parse(loggedInUser) : loggedInUser;
 
   // console.log('USERINFO', userInfo);
 
@@ -66,7 +67,7 @@ const SingleCity = () => {
       console.log(`User (follower) ID: ${follower}`);
       followTraveller({
         user: travellerID,
-        follower: follower
+        follower: follower,
       });
     }
   };
@@ -116,7 +117,7 @@ const SingleCity = () => {
           <div className='singleCity__details singleCity__details--attractions'>
             <h3>Top 3 Attactions</h3>
             <p className='singleCity__attractions-wrapper'>
-              {city.top_3_attractions.map((attraction) => (
+              {city.top_3_attractions.map(attraction => (
                 <span key={attraction} className='singleCity__attractions'>
                   {attraction}
                 </span>
@@ -134,9 +135,12 @@ const SingleCity = () => {
             {travellers.length === 0 ? (
               <p>No travellers yet. Be the first!</p>
             ) : (
-              travellers.map((traveller) => (
+              travellers.map(traveller => (
                 <div key={traveller.id} className='singleCity__traveller'>
-                  <Link to={`/profile/${traveller.id}`} className='singleCity__traveller-link'>
+                  <Link
+                    to={`/profile/${traveller.id}`}
+                    className='singleCity__traveller-link'
+                  >
                     <div
                       className='singleCity__traveller-image'
                       style={{ backgroundImage: `url(${traveller.image})` }}
@@ -161,12 +165,16 @@ const SingleCity = () => {
       </div>
       <div className='singleCity__details singleCity__details--reviews-container'>
         <h3>Reviews of {city.city}</h3>
-        <Link to={`/review/${id}`}>Add a review</Link>
+        {Object.keys(loggedInUser).length > 0 && (
+          <Link className='button button--review' to={`/review/${id}`}>
+            Add a review
+          </Link>
+        )}
         <div className='singleCity__reviews'>
           {city.reviews.length === 0 ? (
             <p>No reviews for {city.city}. Be the first to leave one!</p>
           ) : (
-            city.reviews.map((review) => (
+            city.reviews.map(review => (
               <div key={review.id} className='singleCity__review'>
                 <p>"{review.text}"</p>
                 <div className='singleCity__review-ratings'>
@@ -186,7 +194,9 @@ const SingleCity = () => {
                     {getUserDetails(review.user)?.last_name}
                   </span>
                   &emsp;~&emsp;
-                  <span className='singleCity__review-date'>{review.created_date}</span>
+                  <span className='singleCity__review-date'>
+                    {review.created_date}
+                  </span>
                 </p>
               </div>
             ))

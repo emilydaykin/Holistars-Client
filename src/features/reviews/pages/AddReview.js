@@ -47,42 +47,51 @@ const AddReview = () => {
 
   return (
     <section className='section-main'>
-      <h1>Add a Review</h1>
-      <form onSubmit={handleSubmit} className='form'>
-        <div className='form-control'>
-          <label htmlFor='text'>Your thoughs:</label>
-          <textarea
-            className='input'
-            name='text'
-            id='text'
-            onChange={handleChange}
-          ></textarea>
-        </div>
-
-        <div className='form-control'>
-          <label htmlFor='review-text'>Your thoughs:</label>
-          <select name='rating_food' id='rating_food' onChange={handleChange}>
-            {addRating()}
-          </select>
-          <select
-            name='rating_weather'
-            id='rating_weather'
-            onChange={handleChange}
-          >
-            {addRating()}
-          </select>
-          <select
-            name='rating_culture'
-            id='rating_culture'
-            onChange={handleChange}
-          >
-            {addRating()}
-          </select>
-        </div>
-        <button type='submit' className='button'>
-          Add Review
-        </button>
-      </form>
+      <div className='container'>
+        <h1>Add a Review</h1>
+        {token ? (
+          <form onSubmit={handleSubmit} className='form form__review'>
+            <div className='form-control'>
+              <label htmlFor='text'>Your thoughs:</label>
+              <textarea
+                className='input textarea'
+                name='text'
+                id='text'
+                onChange={handleChange}
+              ></textarea>
+            </div>
+            <div className='form-control ratings'>
+              <label htmlFor='review-text'>Your thoughs:</label>
+              <select
+                name='rating_food'
+                id='rating_food'
+                onChange={handleChange}
+              >
+                {addRating()}
+              </select>
+              <select
+                name='rating_weather'
+                id='rating_weather'
+                onChange={handleChange}
+              >
+                {addRating()}
+              </select>
+              <select
+                name='rating_culture'
+                id='rating_culture'
+                onChange={handleChange}
+              >
+                {addRating()}
+              </select>
+            </div>
+            <button type='submit' className='button'>
+              Add Review
+            </button>
+          </form>
+        ) : (
+          'Please login to add a review'
+        )}
+      </div>
     </section>
   );
 };

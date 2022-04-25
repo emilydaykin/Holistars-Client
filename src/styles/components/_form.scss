@@ -14,10 +14,33 @@ input, textarea, select, option {
   margin: 1.5em;
   position: relative;
 
+  .textarea {
+    height: 15em;
+  }
+
   .button {
     font-size: 1.2rem;
+
+    &--review {
+      display: inline-block;
+      margin-top: 0.5em;
+    }
+  }
+
+  &__register, &__review {
+    width: 95%;
+    max-width: 900px;
+    margin-inline: auto;
+
+    * {
+      display: block;
+      width: 95.5%;
+      margin-bottom: 1em;
+    }
   }
 }
+
+
 
 .input {
   font-family: inherit;
