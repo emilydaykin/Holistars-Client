@@ -66,12 +66,15 @@ const AuthForm = ({ login }) => {
   };
 
   const handleRegister = e => {
+    e.preventDefault();
     try {
       dispatch(registerUser(user));
       console.log(user);
     } catch (err) {
       console.error('Failed to register user', err);
     }
+    setUser(initialRegisterlUser);
+    navigate('/');
   };
 
   return (
@@ -140,7 +143,12 @@ const AuthForm = ({ login }) => {
             {previewSource && (
               <img
                 src={previewSource}
-                style={{ height: '300px', width: '300px' }}
+                style={{
+                  height: '300px',
+                  width: '300px',
+                  marginInline: 'auto',
+                  borderRadius: '10px',
+                }}
                 alt=''
               />
             )}
