@@ -9,9 +9,9 @@ const AddReview = () => {
   const [newReview, setNewReview] = useState({
     text: '',
     city: Number(cityId),
-    rating_food: 0,
-    rating_weather: 0,
-    rating_culture: 0
+    rating_food: 1, // default has to be set to 1 or else if user...
+    rating_weather: 1, // ...leaves rating as default 1, it'll be 0
+    rating_culture: 1
   });
 
   const addRating = () => {
@@ -46,13 +46,13 @@ const AddReview = () => {
   console.log(newReview);
 
   return (
-    <section className='section-main'>
+    <section className='addReview section-main'>
       <div className='container'>
         <h1>Add a Review</h1>
         {token ? (
           <form onSubmit={handleSubmit} className='form form__review'>
             <div className='form-control'>
-              <label htmlFor='text'>Your thoughts:</label>
+              <label htmlFor='text'>Your Thoughts 💭</label>
               <textarea
                 className='input textarea'
                 name='text'
@@ -60,17 +60,42 @@ const AddReview = () => {
                 onChange={handleChange}
               ></textarea>
             </div>
+            <p>Your Ratings</p>
             <div className='form-control ratings'>
-              <label htmlFor='review-text'>Rate Food:</label>
-              <select name='rating_food' id='rating_food' onChange={handleChange}>
+              <label className='addReview__label' htmlFor='review-text'>
+                🥘 <br />
+                Food
+              </label>
+              <select
+                className='addReview__select'
+                name='rating_food'
+                id='rating_food'
+                onChange={handleChange}
+              >
                 {addRating()}
               </select>
-              <label htmlFor='review-text'>Rate Weather:</label>
-              <select name='rating_weather' id='rating_weather' onChange={handleChange}>
+              <label className='addReview__label' htmlFor='review-text'>
+                ☀️ <br />
+                Weather
+              </label>
+              <select
+                className='addReview__select'
+                name='rating_weather'
+                id='rating_weather'
+                onChange={handleChange}
+              >
                 {addRating()}
               </select>
-              <label htmlFor='review-text'>Rate Culture:</label>
-              <select name='rating_culture' id='rating_culture' onChange={handleChange}>
+              <label className='addReview__label' htmlFor='review-text'>
+                💃 <br />
+                Culture
+              </label>
+              <select
+                className='addReview__select'
+                name='rating_culture'
+                id='rating_culture'
+                onChange={handleChange}
+              >
                 {addRating()}
               </select>
             </div>

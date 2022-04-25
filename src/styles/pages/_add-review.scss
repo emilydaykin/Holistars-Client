@@ -1,0 +1,12 @@
+.addReview {
+
+  &__label {
+    text-align: center;
+  }
+
+  &__select {
+    border-radius: 10px;
+    border: 2px solid #000;
+    padding-left: 1em;
+  }
+}
