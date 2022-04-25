@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 // import { selectAllCities } from '../features/cities/citiesSlice';
 // import { filterCities } from '../features/cities/citiesSlice';
 import { getAllCities } from '../api/cities_api';
+import Stars from './Stars';
 
 const Cities = () => {
   // const allCities = useSelector(selectAllCities);
@@ -17,6 +18,10 @@ const Cities = () => {
   // console.log('USERS', users);
 
   // console.log('CITIES', cities);
+
+  const getCityAvgRating = city =>
+    city.reviews.reduce((total, review) => total + review.avg_rating, 0) /
+    city.reviews.length;
 
   useEffect(() => {
     const getCityData = async () => {
@@ -33,7 +38,7 @@ const Cities = () => {
     'North America': 'DarkSlateGray',
     Africa: 'MidnightBlue',
     'Australia & Pacific': 'FireBrick',
-    'South America': 'SaddleBrown'
+    'South America': 'SaddleBrown',
   };
 
   const filterThroughCities = async () => {
@@ -42,7 +47,7 @@ const Cities = () => {
     setCities(filteredCities);
   };
 
-  const handleSearchChange = (e) => {
+  const handleSearchChange = e => {
     console.log('search', e.target.value);
     setSearchInput(e.target.value);
     filterThroughCities();
@@ -65,14 +70,18 @@ const Cities = () => {
         {!cities ? (
           <p>Loading cities...</p>
         ) : (
-          cities.map((city) => (
-            <Link className='cities__city-card-link' to={`/destinations/${city.id}`} key={city.id}>
+          cities.map(city => (
+            <Link
+              className='cities__city-card-link'
+              to={`/destinations/${city.id}`}
+              key={city.id}
+            >
               <div className='card cities__city-card'>
                 <div
                   className='cities__city-image'
                   style={{
                     backgroundImage: `url(${city.image})`,
-                    backgroundSize: 'cover'
+                    backgroundSize: 'cover',
                   }}
                 ></div>
                 <div className='cities__city-text'>
@@ -84,11 +93,16 @@ const Cities = () => {
                       style={{
                         color: continentColorCodes[city.continent],
                         fontWeight: 300,
-                        fontSize: '1.25rem'
+                        fontSize: '1.25rem',
                       }}
                     >
                       {city.continent}
                     </span>
+                    {city.reviews.length > 0 ? (
+                      <Stars value={getCityAvgRating(city)} />
+                    ) : (
+                      ''
+                    )}
                   </p>
                 </div>
               </div>

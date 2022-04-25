@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { getCityById } from '../api/cities_api';
 import { selectAllUsers } from '../features/users/usersSlice';
 import { followTraveller } from '../api/followers_api';
@@ -18,14 +18,16 @@ const SingleCity = () => {
   const users = useSelector(selectAllUsers);
   const detailsContainers = useRef(null);
 
-  const getUserDetails = (userId) => users.find((user) => Number(user.id) === Number(userId));
+  const getUserDetails = userId =>
+    users.find(user => Number(user.id) === Number(userId));
 
   useEffect(() => {
     const getHeight = () => {
       const childNodesHeight =
         detailsContainers.current &&
         [...detailsContainers.current.childNodes].reduce(
-          (prevElement, current) => prevElement + current.getBoundingClientRect().height,
+          (prevElement, current) =>
+            prevElement + current.getBoundingClientRect().height,
           0
         );
       setTravellersDivHeight(childNodesHeight + 17); // 1.5em
@@ -37,8 +39,11 @@ const SingleCity = () => {
   useEffect(() => {
     const getCityTravellers = () => {
       /** Users who've been to this city */
-      const filteredTravellers = users.filter((user) => {
-        return user.holidays.filter((hol) => Number(hol.city) === Number(id)).length > 0;
+      const filteredTravellers = users.filter(user => {
+        return (
+          user.holidays.filter(hol => Number(hol.city) === Number(id)).length >
+          0
+        );
       });
       setTravellers(filteredTravellers);
     };
@@ -53,7 +58,7 @@ const SingleCity = () => {
     getCity();
   }, [id]);
 
-  const followUser = (travellerID) => {
+  const followUser = travellerID => {
     console.log('Follow button CLICKED!');
     console.log(`User (being followed) ID: ${travellerID}`); // user being followed!
     if (userInfo) {
@@ -89,7 +94,7 @@ const SingleCity = () => {
     <section
       className='singleCity'
       style={{
-        backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.1)), url(${city.image})`
+        backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.1)), url(${city.image})`,
       }}
     >
       <div className='singleCity__geography'>
@@ -156,6 +161,7 @@ const SingleCity = () => {
       </div>
       <div className='singleCity__details singleCity__details--reviews-container'>
         <h3>Reviews of {city.city}</h3>
+        <Link to={`/review/${id}`}>Add a review</Link>
         <div className='singleCity__reviews'>
           {city.reviews.length === 0 ? (
             <p>No reviews for {city.city}. Be the first to leave one!</p>
