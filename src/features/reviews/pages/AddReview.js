@@ -52,7 +52,7 @@ const AddReview = () => {
         <div className='form-control'>
           <label htmlFor='text'>Your thoughs:</label>
           <textarea
-            className='input'
+            className='input textarea'
             name='text'
             id='text'
             onChange={handleChange}

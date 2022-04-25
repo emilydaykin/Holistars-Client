@@ -17,7 +17,17 @@ input, textarea, select, option {
   .button {
     font-size: 1.2rem;
   }
+
+  &__register {
+    * {
+      display: block;
+      width: 95.5%;
+      margin-bottom: 1em;
+    }
+  }
 }
+
+
 
 .input {
   font-family: inherit;
