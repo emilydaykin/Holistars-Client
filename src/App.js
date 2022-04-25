@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
+import Feed from './components/Feed';
 import About from './components/About';
 import Cities from './components/Cities';
 import SingleCity from './components/SingleCity';
@@ -20,6 +21,7 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
+        <Route path='/feed' element={<Feed />} />
         <Route path='/about' element={<About />} />
         <Route path='/destinations' element={<Cities />} />
         <Route path='/destinations/:id' element={<SingleCity />} />

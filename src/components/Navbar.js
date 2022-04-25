@@ -37,6 +37,9 @@ const Navbar = () => {
           <Link className='header__nav-item' to={'/destinations'}>
             Destinations
           </Link>
+          <Link className='header__nav-item' to={'/feed'}>
+            Feed
+          </Link>
         </div>
         <div className='header__nav-right'>
           {userInfo?.id ? (
