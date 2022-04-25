@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import api from '../../api/users_api';
+import axios from 'axios';
 
 const initialState = {
   userInfo: sessionStorage.getItem('userInfo') ? sessionStorage.getItem('userInfo') : {}
@@ -7,7 +8,9 @@ const initialState = {
 
 export const loginUser = createAsyncThunk('login/loginUser', async (user) => {
   try {
-    const response = await api.post('/authentication/login/', user);
+    const response = await axios.post(`http://localhost:8000/api/authentication/login/`, user, {
+      headers: { 'Content-Type': 'application/json' }
+    });
     sessionStorage.setItem('userInfo', JSON.stringify(response.data));
     return response.data;
   } catch (err) {
