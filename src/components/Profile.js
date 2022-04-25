@@ -10,7 +10,7 @@ import CreateHoliday from './CreateHoliday';
 
 const Profile = () => {
   const { id } = useParams();
-  console.log('ID', id);
+  // console.log('ID', id);
 
   const allCities = useSelector(selectAllCities);
   const user = useSelector((state) => selectUserById(state, Number(id)));
@@ -39,14 +39,14 @@ const Profile = () => {
 
   useEffect(() => {
     const orderHolidaysByDate = () => {
-      console.log('orderhols');
+      // console.log('orderhols');
       const orderedHolidays = user?.holidays
         .slice()
         .sort((a, b) => new Date(prettifyDate(b.date)) - new Date(prettifyDate(a.date)));
       setOrderedUserHolidays(orderedHolidays);
     };
     orderHolidaysByDate();
-  }, [id, user?.holidays]);
+  }, [id, user, user?.holidays]);
 
   const findCity = (cityId) => {
     return allCities.find((city) => city.id === cityId);
@@ -56,6 +56,8 @@ const Profile = () => {
     console.log('clicked');
     setAddHolidayClicked(true);
   };
+
+  // console.log('orderedUserHolidays', orderedUserHolidays);
 
   return (
     <section className='profile'>
@@ -67,18 +69,15 @@ const Profile = () => {
       ) : (
         <></>
       )}
-      {/* <h1 className='profile__title'>Profile Page</h1> */}
       {!user || !orderedUserHolidays ? (
         <p></p>
       ) : (
         <div className='profile__container'>
           <div className='profile__info'>
-            <img
+            <div
               className='profile__profile-picture'
-              src={user.image}
-              alt='user profile image'
-              width='250px'
-            />
+              style={{ backgroundImage: `url(${user.image})` }}
+            ></div>
             <h2 className='profile__heading'>
               {user.first_name} {user.last_name}
             </h2>
@@ -125,7 +124,7 @@ const Profile = () => {
                   </div>
                   <Link
                     className='profile__timeline-entry-link'
-                    to={`/destinations/${holiday.city.id}`}
+                    to={`/destinations/${holiday.city}`}
                   >
                     <div className='profile__timeline-entry'>
                       <div

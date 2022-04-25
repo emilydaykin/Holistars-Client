@@ -2,22 +2,21 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
 import { getCityById } from '../api/cities_api';
-import { selectCityById } from '../features/cities/citiesSlice';
 import { selectAllUsers } from '../features/users/usersSlice';
-import { selectUserById } from '../features/users/usersSlice';
+import { followTraveller } from '../api/followers_api';
 
 const SingleCity = () => {
   const [travellersDivHeight, setTravellersDivHeight] = useState(0);
   const [city, setCity] = useState(null);
   const [travellers, setTravellers] = useState([]);
+  const loggedInUser = useSelector((state) => state.userInfo.userInfo);
+  const userInfo = typeof loggedInUser === 'string' ? JSON.parse(loggedInUser) : loggedInUser;
 
-  console.log('CITY', city);
+  // console.log('USERINFO', userInfo);
 
   const { id } = useParams(); // city id
   const users = useSelector(selectAllUsers);
   const detailsContainers = useRef(null);
-  // console.log('id', id);
-  console.log('USERS', users);
 
   const getUserDetails = userId =>
     users.find(user => Number(user.id) === Number(userId));
@@ -51,8 +50,6 @@ const SingleCity = () => {
     getCityTravellers();
   }, [id, users]);
 
-  // console.log('TRAVELLERS', travellers);
-
   useEffect(() => {
     const getCity = async () => {
       const destination = await getCityById(id);
@@ -61,11 +58,17 @@ const SingleCity = () => {
     getCity();
   }, [id]);
 
-  // console.log('travellersDivHeight', travellersDivHeight);
-
   const followUser = travellerID => {
     console.log('Follow button CLICKED!');
-    console.log(`User ID: ${travellerID}`);
+    console.log(`User (being followed) ID: ${travellerID}`); // user being followed!
+    if (userInfo) {
+      const follower = userInfo.id;
+      console.log(`User (follower) ID: ${follower}`);
+      followTraveller({
+        user: travellerID,
+        follower: follower
+      });
+    }
   };
 
   function getStars(rating) {
@@ -113,8 +116,10 @@ const SingleCity = () => {
           <div className='singleCity__details singleCity__details--attractions'>
             <h3>Top 3 Attactions</h3>
             <p className='singleCity__attractions-wrapper'>
-              {city.top_3_attractions.map(attraction => (
-                <span className='singleCity__attractions'>{attraction}</span>
+              {city.top_3_attractions.map((attraction) => (
+                <span key={attraction} className='singleCity__attractions'>
+                  {attraction}
+                </span>
               ))}
             </p>
           </div>
@@ -129,21 +134,25 @@ const SingleCity = () => {
             {travellers.length === 0 ? (
               <p>No travellers yet. Be the first!</p>
             ) : (
-              travellers.map(traveller => (
-                <div className='singleCity__traveller' key={traveller.id}>
-                  <div
-                    className='singleCity__traveller-image'
-                    style={{ backgroundImage: `url(${traveller.image})` }}
-                  ></div>
-                  <div className='singleCity__traveller-name'>
-                    {traveller.first_name} {traveller.last_name}
-                  </div>
-                  <button
-                    className='button singleCity__follow-traveller'
-                    onClick={() => followUser(traveller.id)}
-                  >
-                    Follow
-                  </button>
+              travellers.map((traveller) => (
+                <div key={traveller.id} className='singleCity__traveller'>
+                  <Link to={`/profile/${traveller.id}`} className='singleCity__traveller-name'>
+                    <div
+                      className='singleCity__traveller-image'
+                      style={{ backgroundImage: `url(${traveller.image})` }}
+                    ></div>
+                    <div className='singleCity__traveller-name'>
+                      {traveller.first_name} {traveller.last_name}
+                    </div>
+                  </Link>
+                  {Object.keys(userInfo).length !== 0 && (
+                    <button
+                      className='button singleCity__follow-traveller'
+                      onClick={() => followUser(traveller.id)}
+                    >
+                      Follow
+                    </button>
+                  )}
                 </div>
               ))
             )}
@@ -154,32 +163,34 @@ const SingleCity = () => {
         <h3>Reviews of {city.city}</h3>
         <Link to={`/review/${id}`}>Add a review</Link>
         <div className='singleCity__reviews'>
-          {city.reviews.map(review => (
-            <div key={review.id} className='singleCity__review'>
-              <p>"{review.text}"</p>
-              <div className='singleCity__review-ratings'>
+          {city.reviews.length === 0 ? (
+            <p>No reviews for {city.city}. Be the first to leave one!</p>
+          ) : (
+            city.reviews.map((review) => (
+              <div key={review.id} className='singleCity__review'>
+                <p>"{review.text}"</p>
+                <div className='singleCity__review-ratings'>
+                  <p>
+                    Food <span>{getStars(review.rating_food)}</span>
+                  </p>
+                  <p>
+                    Weather <span>{getStars(review.rating_weather)}</span>
+                  </p>
+                  <p>
+                    Culture <span>{getStars(review.rating_culture)}</span>
+                  </p>
+                </div>
                 <p>
-                  Food <span>{getStars(review.rating_food)}</span>
-                </p>
-                <p>
-                  Weather <span>{getStars(review.rating_weather)}</span>
-                </p>
-                <p>
-                  Culture <span>{getStars(review.rating_culture)}</span>
+                  <span className='singleCity__reviewer'>
+                    {getUserDetails(review.user)?.first_name}
+                    {getUserDetails(review.user)?.last_name}
+                  </span>
+                  &emsp;~&emsp;
+                  <span className='singleCity__review-date'>{review.created_date}</span>
                 </p>
               </div>
-              <p>
-                <span className='singleCity__reviewer'>
-                  {getUserDetails(review.user).first_name}{' '}
-                  {getUserDetails(review.user).last_name}
-                </span>
-                &emsp;~&emsp;
-                <span className='singleCity__review-date'>
-                  {review.created_date}
-                </span>
-              </p>
-            </div>
-          ))}
+            ))
+          )}
         </div>
       </div>
     </section>

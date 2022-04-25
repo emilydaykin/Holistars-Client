@@ -1,3 +1,9 @@
+body {
+  box-sizing: border-box; // this would only put it on the body, it is not inherited
+  margin: 0;
+  font-family: var(--font-family-body);
+}
+
 .section-main {
   margin-top: 6em;
   padding: 4em 0;

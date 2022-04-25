@@ -7,7 +7,7 @@ const initialState = [];
 export const fetchCities = createAsyncThunk('cities/fetchCities', async () => {
   try {
     const response = await axios.get('http://localhost:8000/api/cities/');
-    console.log('RESPONSE', response.data);
+    // console.log('RESPONSE', response.data);
     return response.data;
   } catch (err) {
     return err.message;
@@ -17,7 +17,7 @@ export const fetchCities = createAsyncThunk('cities/fetchCities', async () => {
 export const filterCities = createAsyncThunk('cities/filterCities', async (search_term) => {
   try {
     const response = await axios.get(`http://localhost:8000/api/cities/${search_term}/`);
-    console.log('RESPONSE', response.data);
+    // console.log('RESPONSE', response.data);
     return response.data;
   } catch (err) {
     return err.message;
