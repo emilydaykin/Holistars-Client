@@ -70,10 +70,10 @@ const AddNewCity = () => {
   };
 
   const addCityToDb = async (cityObject) => {
-    console.log('CITY SELECTED!');
+    // console.log('CITY SELECTED!');
     setResultClicked(true);
     await replaceInvalidImage(cityObject);
-    console.log('cityObject', cityObject);
+    // console.log('cityObject', cityObject);
     setCityToAdd(cityObject);
     try {
       await addCity(cityObject);

@@ -54,11 +54,11 @@ const SingleCity = () => {
   }, [id]);
 
   const followUser = (travellerID) => {
-    console.log('Follow button CLICKED!');
-    console.log(`User (being followed) ID: ${travellerID}`); // user being followed!
+    // console.log('Follow button CLICKED!');
+    // console.log(`User (being followed) ID: ${travellerID}`); // user being followed!
     if (userInfo) {
       const follower = userInfo.id;
-      console.log(`User (follower) ID: ${follower}`);
+      // console.log(`User (follower) ID: ${follower}`);
       followTraveller({
         user: travellerID,
         follower: follower

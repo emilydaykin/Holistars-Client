@@ -32,7 +32,7 @@ const Cities = () => {
   };
 
   const filterThroughCities = async (searchInput) => {
-    console.log('searchInput', searchInput);
+    // console.log('searchInput', searchInput);
     if (searchInput) {
       const filteredCities = await searchCities(searchInput);
       setCities(filteredCities);

@@ -67,7 +67,7 @@ const AuthForm = ({ login }) => {
     e.preventDefault();
     try {
       dispatch(registerUser(user));
-      console.log(user);
+      // console.log(user);
     } catch (err) {
       console.error('Failed to register user', err);
     }

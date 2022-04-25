@@ -6,7 +6,6 @@ const initialState = [];
 
 export const fetchCities = createAsyncThunk('cities/fetchCities', async () => {
   try {
-    console.log('process.env.REACT_APP_API_URL', process.env.REACT_APP_API_URL);
     const response = await axios.get(`${process.env.REACT_APP_API_URL}/cities/`);
     // console.log('RESPONSE', response.data);
     return response.data;

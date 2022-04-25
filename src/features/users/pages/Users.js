@@ -5,7 +5,7 @@ import { selectAllUsers } from '../usersSlice';
 const Users = () => {
   const users = useSelector(selectAllUsers);
 
-  console.log(users);
+  // console.log(users);
 
   return (
     <section className='section-main'>

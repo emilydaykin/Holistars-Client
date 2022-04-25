@@ -53,7 +53,6 @@ const Profile = () => {
   };
 
   const handleAddHoliday = (e) => {
-    console.log('clicked');
     setAddHolidayClicked(true);
   };
 

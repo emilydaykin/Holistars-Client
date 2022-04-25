@@ -43,7 +43,7 @@ const AddReview = () => {
       .catch(console.error);
   };
 
-  console.log(newReview);
+  // console.log(newReview);
 
   return (
     <section className='addReview section-main'>
