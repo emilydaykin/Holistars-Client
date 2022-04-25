@@ -3,6 +3,12 @@ import { selectAllCities } from '../features/cities/citiesSlice';
 import { useSelector } from 'react-redux';
 import githubLogo from '../assets/github-logo.png';
 import linkedinLogo from '../assets/linkedin-logo.png';
+import reactLogo from '../assets/react-logo.png';
+import pythonLogo from '../assets/python-logo.png';
+import sassLogo from '../assets/sass-logo.png';
+import reduxLogo from '../assets/redux-logo.png';
+import djangoLogo from '../assets/django-logo.png';
+import beautifulSoupLogo from '../assets/beautifulsoup-logo.jpeg';
 
 const About = () => {
   const allCities = useSelector(selectAllCities);
@@ -87,6 +93,35 @@ const About = () => {
                   Reiciendis, vero.
                 </p>
               </div>
+            </div>
+          </div>
+        </div>
+        <div className='about__creators-container'>
+          <h2 className='about__subtitle'>Powered By</h2>
+          <div className='about__technologies'>
+            <div className='card about__technologies-container'>
+              <a target='_blank' href='https://sass-lang.com/' rel='noreferrer'>
+                <img src={sassLogo} alt='Sass logo' />
+              </a>
+              <a target='_blank' href='https://reactjs.org/' rel='noreferrer'>
+                <img src={reactLogo} alt='React logo' />
+              </a>
+              <a target='_blank' href='https://redux.js.org/' rel='noreferrer'>
+                <img src={reduxLogo} alt='Redux logo' />
+              </a>
+              <a target='_blank' href='https://www.djangoproject.com/' rel='noreferrer'>
+                <img src={djangoLogo} alt='Django logo' />
+              </a>
+              <a target='_blank' href='https://www.python.org/' rel='noreferrer'>
+                <img src={pythonLogo} alt='Python logo' />
+              </a>
+              <a
+                target='_blank'
+                href='https://www.crummy.com/software/BeautifulSoup/bs4/doc/'
+                rel='noreferrer'
+              >
+                <img src={beautifulSoupLogo} alt='Beautiful Soup logo' />
+              </a>
             </div>
           </div>
         </div>
