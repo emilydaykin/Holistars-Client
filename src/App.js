@@ -25,7 +25,7 @@ const App = () => {
         <Route path='/destinations' element={<Cities />} />
         <Route path='/destinations/:id' element={<SingleCity />} />
         <Route path='/create-holiday/' element={<CreateHoliday />} />
-        <Route path='/add-new-city-TEMP' element={<AddNewCity />} />
+        <Route path='/add-new-city' element={<AddNewCity />} />
         <Route path='/profile/:id' element={<Profile />} />
         <Route path='/users' element={<Users />} />
         <Route path='/users/:id' element={<SingleUser />} />

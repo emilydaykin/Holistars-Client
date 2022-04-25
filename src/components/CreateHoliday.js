@@ -17,9 +17,9 @@ const CreateHoliday = ({ addHolidayClicked, setAddHolidayClicked }) => {
     setUserInfo(sessionStorage.getItem('userInfo'));
   }, [sessionStorage]);
 
-  console.log('USER', userInfo);
+  // console.log('USER', userInfo);
 
-  console.log('sessionStorage', sessionStorage);
+  // console.log('sessionStorage', sessionStorage);
   const [formData, setFormData] = useState({
     user: 0,
     city: 27, // default Athens, Greece (bug: requires selecting twice so fixing it here)
@@ -99,7 +99,7 @@ const CreateHoliday = ({ addHolidayClicked, setAddHolidayClicked }) => {
             </select>
             <Link
               className='button createHoliday__button createHoliday__button--add-destination'
-              to={'/add-new-city-TEMP'}
+              to={'/add-new-city'}
             >
               Can't find your holiday destination? Scrape it here!
             </Link>
