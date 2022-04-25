@@ -1,13 +1,13 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const AddReview = () => {
   const { cityId } = useParams();
-  const userId = JSON.parse(sessionStorage.getItem('userInfo')).id;
+  const navigate = useNavigate();
+  const token = JSON.parse(sessionStorage.getItem('userInfo')).token;
   const [newReview, setNewReview] = useState({
     text: '',
-    user: userId,
     city: Number(cityId),
     rating_food: 0,
     rating_weather: 0,
@@ -34,8 +34,12 @@ const AddReview = () => {
   const handleSubmit = e => {
     e.preventDefault();
     axios
-      .post('http://localhost:8000/api/review/create/', newReview)
-      .then(({ data }) => console.log(data))
+      .post('http://localhost:8000/api/review/create/', newReview, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then(() => navigate(-1))
       .catch(console.error);
   };
 
@@ -44,10 +48,15 @@ const AddReview = () => {
   return (
     <section className='section-main'>
       <h1>Add a Review</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className='form'>
         <div className='form-control'>
           <label htmlFor='text'>Your thoughs:</label>
-          <textarea name='text' id='text' onChange={handleChange}></textarea>
+          <textarea
+            className='input'
+            name='text'
+            id='text'
+            onChange={handleChange}
+          ></textarea>
         </div>
 
         <div className='form-control'>
@@ -70,7 +79,9 @@ const AddReview = () => {
             {addRating()}
           </select>
         </div>
-        <button type='submit'>Add Review</button>
+        <button type='submit' className='button'>
+          Add Review
+        </button>
       </form>
     </section>
   );
