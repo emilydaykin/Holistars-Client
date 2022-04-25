@@ -6,7 +6,9 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 
 const AddNewCity = () => {
-  const userInfo = useSelector((state) => state.userInfo.userInfo);
+  // const userInfo = useSelector((state) => state.userInfo.userInfo);
+  const loggedInUser = useSelector((state) => state.userInfo.userInfo);
+  const userInfo = typeof loggedInUser === 'string' ? JSON.parse(loggedInUser) : loggedInUser;
   const [searchResults, setSearchResults] = useState(null);
   const [searchInput, setSearchInput] = useState({
     city: '',
@@ -93,7 +95,7 @@ const AddNewCity = () => {
           </p>
           <Link
             className='button addNewCity__city-clicked-popup--button'
-            to={{ pathname: `/profile/${JSON.parse(userInfo)?.id}`, state: { fromAddCity: true } }}
+            to={{ pathname: `/profile/${userInfo?.id}`, state: { fromAddCity: true } }}
           >
             Return to add holiday
           </Link>

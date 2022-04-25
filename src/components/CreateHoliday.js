@@ -5,11 +5,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import { addHoliday } from '../api/holidays_api';
-import { useSelector } from 'react-redux';
 
 const CreateHoliday = ({ addHolidayClicked, setAddHolidayClicked }) => {
   const [cities, setCities] = useState(null);
-  // const userInfo = useSelector((state) => state.userInfo.userInfo);
 
   const [userInfo, setUserInfo] = useState(null);
 
@@ -17,9 +15,6 @@ const CreateHoliday = ({ addHolidayClicked, setAddHolidayClicked }) => {
     setUserInfo(sessionStorage.getItem('userInfo'));
   }, [sessionStorage]);
 
-  console.log('USER', userInfo);
-
-  console.log('sessionStorage', sessionStorage);
   const [formData, setFormData] = useState({
     user: 0,
     city: 27, // default Athens, Greece (bug: requires selecting twice so fixing it here)
@@ -36,8 +31,6 @@ const CreateHoliday = ({ addHolidayClicked, setAddHolidayClicked }) => {
     };
     getCityData();
   }, []);
-
-  // const allCities = useSelector(selectAllCities);
 
   console.log('cities', cities);
 
@@ -99,7 +92,7 @@ const CreateHoliday = ({ addHolidayClicked, setAddHolidayClicked }) => {
             </select>
             <Link
               className='button createHoliday__button createHoliday__button--add-destination'
-              to={'/add-new-city-TEMP'}
+              to={'/add-new-city'}
             >
               Can't find your holiday destination? Scrape it here!
             </Link>
@@ -125,29 +118,6 @@ const CreateHoliday = ({ addHolidayClicked, setAddHolidayClicked }) => {
               value={formData.duration}
               onChange={handleChange}
             />
-            {/* <label className='createHoliday__form-label' htmlFor='review'>
-              Review
-            </label>
-            <textarea
-              className='input createHoliday__form-field createHoliday__form-field--review'
-              type='text'
-              name='review'
-              placeholder='Let others know how your holiday was!'
-              rows='3'
-            ></textarea>
-            Rating
-            <div className='createHoliday__rating createHoliday__rating--food'>
-              <label className='createHoliday__form-label'>Weather</label>
-              <div>⭐️⭐️⭐️⭐️⭐️</div>
-            </div>
-            <div className='createHoliday__rating createHoliday__rating--food'>
-              <label className='createHoliday__form-label'>Food</label>
-              <div>⭐️⭐️⭐️⭐️⭐️</div>
-            </div>
-            <div className='createHoliday__rating createHoliday__rating--food'>
-              <label className='createHoliday__form-label'>Culture</label>
-              <div>⭐️⭐️⭐️⭐️⭐️</div>
-            </div> */}
             <button
               className='button createHoliday__button createHoliday__button--submit'
               onClick={handleSubmit}
