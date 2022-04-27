@@ -12,8 +12,6 @@ const SingleCity = () => {
   const loggedInUser = useSelector((state) => state.userInfo.userInfo);
   const userInfo = typeof loggedInUser === 'string' ? JSON.parse(loggedInUser) : loggedInUser;
 
-  // console.log('USERINFO', userInfo);
-
   const { id } = useParams(); // city id
   const users = useSelector(selectAllUsers);
   const detailsContainers = useRef(null);
@@ -28,7 +26,7 @@ const SingleCity = () => {
           (prevElement, current) => prevElement + current.getBoundingClientRect().height,
           0
         );
-      setTravellersDivHeight(childNodesHeight + 17); // 1.5em
+      setTravellersDivHeight(childNodesHeight + 17); // from 1.5em in scss
     };
     window.addEventListener('resize', getHeight);
     getHeight();
@@ -54,11 +52,8 @@ const SingleCity = () => {
   }, [id]);
 
   const followUser = (travellerID) => {
-    // console.log('Follow button CLICKED!');
-    // console.log(`User (being followed) ID: ${travellerID}`); // user being followed!
     if (userInfo) {
       const follower = userInfo.id;
-      // console.log(`User (follower) ID: ${follower}`);
       followTraveller({
         user: travellerID,
         follower: follower

@@ -1,13 +1,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { getAllCities } from '../../api/cities_api';
 
 const initialState = [];
 
 export const fetchCities = createAsyncThunk('cities/fetchCities', async () => {
   try {
     const response = await axios.get(`${process.env.REACT_APP_API_URL}/cities/`);
-    // console.log('RESPONSE', response.data);
     return response.data;
   } catch (err) {
     return err.message;
@@ -17,7 +15,6 @@ export const fetchCities = createAsyncThunk('cities/fetchCities', async () => {
 export const filterCities = createAsyncThunk('cities/filterCities', async (search_term) => {
   try {
     const response = await axios.get(`${process.env.REACT_APP_API_URL}/cities/${search_term}/`);
-    // console.log('RESPONSE', response.data);
     return response.data;
   } catch (err) {
     return err.message;

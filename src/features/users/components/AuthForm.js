@@ -1,6 +1,6 @@
 import axios from 'axios';
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { loginUser } from '../../login/loginSlice';
 import { registerUser } from '../usersSlice';
 import { useNavigate } from 'react-router-dom';
@@ -67,7 +67,6 @@ const AuthForm = ({ login }) => {
     e.preventDefault();
     try {
       dispatch(registerUser(user));
-      // console.log(user);
     } catch (err) {
       console.error('Failed to register user', err);
     }

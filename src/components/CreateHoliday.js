@@ -32,10 +32,7 @@ const CreateHoliday = ({ addHolidayClicked, setAddHolidayClicked }) => {
     getCityData();
   }, []);
 
-  // console.log('cities', cities);
-
   const goBack = () => {
-    // console.log('GO BACK clicked');
     setAddHolidayClicked(false);
     navigate(`/profile/${JSON.parse(userInfo)?.id}`);
   };
@@ -44,16 +41,10 @@ const CreateHoliday = ({ addHolidayClicked, setAddHolidayClicked }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // console.log('formData', formData);
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log('submit clicked!');
     if (userInfo) {
-      // USER INFO NEEDS TO BE PARSED!
-      // console.log('userInfo INSIDE', userInfo);
       const holidayInfo = { ...formData, user: JSON.parse(userInfo).id };
-      // console.log('holidayInfo', holidayInfo);
       addHoliday(holidayInfo);
       setAddHolidayClicked(false);
       navigate(`/profile/${JSON.parse(userInfo)?.id}`);
