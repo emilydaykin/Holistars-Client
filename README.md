@@ -12,7 +12,7 @@ This project was created by Emily Daykin and Marco Manunta in the span of around
   - Client: `npm install` &#8594; `npm start`
 
 ## Application Walkthrough
-### Home Page (Authenticated = Welcome Page; Unauthenticated = News Feed)
+### Home Page (Unauthenticated = Welcome Page; Authenticated = News Feed)
 <p align="center">
   <img src="./src/assets/readme/home_welcome.gif" width="49.5%"  />
   <img src="./src/assets/readme/home_feed.gif" width="49%"  />
