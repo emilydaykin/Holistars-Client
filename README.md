@@ -21,8 +21,8 @@ This project was created by Emily Daykin and Marco Manunta in the span of around
 ### About, Login & Register Pages
 <p align="center">
   <img src="./src/assets/readme/about.gif" width="50%"  />
-  <img src="./src/assets/readme/login.png" width="24%"  />
-  <img src="./src/assets/readme/register.gif" width="25%"  />
+  <img src="./src/assets/readme/login.png" width="23%"  />
+  <img src="./src/assets/readme/register.gif" width="23.5%"  />
 </p>
 
 ### Destinations 
