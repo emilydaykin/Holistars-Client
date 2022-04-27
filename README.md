@@ -2,7 +2,7 @@
 A full stack social media app for travellers that lets users browse destinations, read & leave reviews, follow other travellers, and create a timeline of their own holidays.
 This project was created by Emily Daykin and Marco Manunta in the span of around 10 days. For a full list of this app's features, see the [Features](#features) section below.
 
-**This repo contains code for the front end client only; code for the back end api lives [here](https://github.com/momoh66/ga-project3-api).**
+**This repo contains code for the front end client only; code for the back end api lives [here](https://github.com/frozenborder72/holistars-api).**
 
 
 ## Installation
