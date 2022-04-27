@@ -12,40 +12,37 @@ This project was created by Emily Daykin and Marco Manunta in the span of around
   - Client: `npm install` &#8594; `npm start`
 
 ## Application Walkthrough
-### Home Page (Authenticated = Welcome Page ; Unauthenticated = News Feed)
+### Home Page (Authenticated = Welcome Page; Unauthenticated = News Feed)
 <p align="center">
-  <img src="./src/images/welcome_page.png" width="46%"  />
-  <img src="./src/images/feed_page.png" width="49.4%"  />
+  <img src="./src/assets/readme/home_welcome.gif" width="49.5%"  />
+  <img src="./src/assets/readme/home_feed.gif" width="49%"  />
 </p>
 
 ### About, Login & Register Pages
 <p align="center">
-  <img src="./src/images/about.png" width="30%"  />
-  <img src="./src/images/login.png" width="29%"  />
-  <img src="./src/images/register.png" width="36%"  />
+  <img src="./src/assets/readme/about.gif" width="50%"  />
+  <img src="./src/assets/readme/login.png" width="24%"  />
+  <img src="./src/assets/readme/register.gif" width="25%"  />
 </p>
 
 ### Destinations 
-(scroll, search, click to single city)
 <p align="center">
-  <img src="./src/images/create_new_post.png" width="90%"  />
+  <img src="./src/assets/readme/destinations.gif" width="90%"  />
 </p>
 
 ### Personal Profile Page
 <p align="center">
-  <img src="./src/images/profile_page.png" width="90%"  />
+  <img src="./src/assets/readme/profile.gif" width="90%"  />
 </p>
 
 ### Single City
-(be LOGGED IN (to show follow): scroll to show reviews)
 <p align="center">
-  <img src="./src/images/neighbourhoods_page.png" width="48%"  />
-  <img src="./src/images/services_page.png" width="48.1%"  />
+  <img src="./src/assets/readme/single_city.gif" width="90%"  />
 </p>
 
 ### Dynamically Scrape Holiday Destination
 <p align="center">
-  <img src="./src/images/neighbourhoods_page.png" width="80%"  />
+  <img src="./src/assets/readme/scraping.gif" width="90%"  />
 </p>
 
 
