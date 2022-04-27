@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-// import { getUserById } from '../api/users_api';
-// import { getAllCities, getCityById } from '../api/cities_api';
 import { Link } from 'react-router-dom';
 import { selectAllCities } from '../features/cities/citiesSlice';
 import { useSelector } from 'react-redux';
@@ -10,12 +8,13 @@ import CreateHoliday from './CreateHoliday';
 
 const Profile = () => {
   const { id } = useParams();
-  // console.log('ID', id);
 
   const allCities = useSelector(selectAllCities);
   const user = useSelector((state) => selectUserById(state, Number(id)));
   const [orderedUserHolidays, setOrderedUserHolidays] = useState([]);
   const [addHolidayClicked, setAddHolidayClicked] = useState(false);
+
+  const loggedInUser = useSelector((state) => state.userInfo.userInfo);
 
   const prettifyDate = (dateString) => {
     const year = dateString.split('/')[1];
@@ -39,7 +38,6 @@ const Profile = () => {
 
   useEffect(() => {
     const orderHolidaysByDate = () => {
-      // console.log('orderhols');
       const orderedHolidays = user?.holidays
         .slice()
         .sort((a, b) => new Date(prettifyDate(b.date)) - new Date(prettifyDate(a.date)));
@@ -55,8 +53,6 @@ const Profile = () => {
   const handleAddHoliday = (e) => {
     setAddHolidayClicked(true);
   };
-
-  // console.log('orderedUserHolidays', orderedUserHolidays);
 
   return (
     <section className='profile'>
@@ -105,12 +101,11 @@ const Profile = () => {
             </div>
           </div>
           <div className='profile__timeline-section'>
-            {/* <Link to={'/create-holiday'}> */}
-            <button className='button profile__add-holiday' onClick={handleAddHoliday}>
-              Add New Holiday
-            </button>
-
-            {/* </Link> */}
+            {user?.id === loggedInUser?.id && (
+              <button className='button profile__add-holiday' onClick={handleAddHoliday}>
+                Add New Holiday
+              </button>
+            )}
             <div className='profile_timeline-container'>
               <div
                 className='profile__line'
