@@ -6,7 +6,6 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 
 const AddNewCity = () => {
-  // const userInfo = useSelector((state) => state.userInfo.userInfo);
   const loggedInUser = useSelector((state) => state.userInfo.userInfo);
   const userInfo = typeof loggedInUser === 'string' ? JSON.parse(loggedInUser) : loggedInUser;
   const [searchResults, setSearchResults] = useState(null);
@@ -70,10 +69,8 @@ const AddNewCity = () => {
   };
 
   const addCityToDb = async (cityObject) => {
-    // console.log('CITY SELECTED!');
     setResultClicked(true);
     await replaceInvalidImage(cityObject);
-    // console.log('cityObject', cityObject);
     setCityToAdd(cityObject);
     try {
       await addCity(cityObject);

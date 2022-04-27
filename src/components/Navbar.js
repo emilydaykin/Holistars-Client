@@ -10,10 +10,8 @@ const Navbar = () => {
   const dispatch = useDispatch();
 
   const userInfo = useSelector((state) => state.userInfo.userInfo);
-  // console.log('userInfo', userInfo);
 
   const customNavbar = (location) => {
-    // If path = home (logged out) or singleCity, make navbar transparent:
     const pathElements = location.split('/');
     if (pathElements.length === 3 && pathElements[1] === 'destinations') {
       return true;

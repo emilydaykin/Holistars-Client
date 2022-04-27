@@ -7,10 +7,8 @@ import Stars from './Stars';
 const Feed = () => {
   const allCities = useSelector(selectAllCities);
   const [orderedReviews, setOrderedReviews] = useState(null);
-  // console.log('ALLCITIES', allCities);
 
   const reviewedCities = allCities.filter((city) => city.reviews.length > 0);
-  // console.log('REVIEWED', reviewedCities);
 
   useEffect(() => {
     const orderReviewsByDate = () => {
@@ -25,8 +23,6 @@ const Feed = () => {
     };
     orderReviewsByDate();
   }, [allCities]);
-
-  // console.log('orderedReviews', orderedReviews);
 
   return (
     <section className='feed'>
