@@ -6,7 +6,7 @@ This project was created by Emily Daykin and Marco Manunta in the span of around
 
 
 ## Installation
-- Check out the live application [here](https://holistars-099f3e.netlify.app/)!
+- [Live deployed application](https://holistars.netlify.app)
 - Or run it locally (from root level of directory):
   - Server: `pipenv shell` &#8594; `pipenv install` &#8594; `python manage.py migrate` &#8594; `python manage.py loaddata data/seed_<table>.json` (for table in 'users', 'cities', 'holidays', 'reviews', 'followers') &#8594; `python manage.py runserver`
   - Client: `npm install` &#8594; `npm start`

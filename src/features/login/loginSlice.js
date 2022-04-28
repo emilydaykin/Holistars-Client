@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import api from '../../api/users_api';
 import axios from 'axios';
 
 const initialState = {
@@ -8,9 +7,13 @@ const initialState = {
 
 export const loginUser = createAsyncThunk('login/loginUser', async (user) => {
   try {
-    const response = await axios.post(`http://localhost:8000/api/authentication/login/`, user, {
-      headers: { 'Content-Type': 'application/json' }
-    });
+    const response = await axios.post(
+      `${process.env.REACT_APP_API_URL}/authentication/login/`,
+      user,
+      {
+        headers: { 'Content-Type': 'application/json' }
+      }
+    );
     sessionStorage.setItem('userInfo', JSON.stringify(response.data));
     return response.data;
   } catch (err) {
