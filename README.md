@@ -87,7 +87,7 @@ This project was created by Emily Daykin and Marco Manunta in the span of around
   - Follow other travellers
 
 ## Planning & Wireframing:
-### Whiteboarding:
+### Whiteboarding (Miro):
 <p align="center">
   <img src="./src/assets/readme/miro_board.png" width="95%"  />
 </p>
@@ -95,6 +95,11 @@ This project was created by Emily Daykin and Marco Manunta in the span of around
 ### Entity Relationship Diagram (ERD via QuickDBD)
 <p align="center">
   <img src="./src/assets/readme/db_final.png" width="75%"  />
+</p>
+
+### Task Management (Trello)
+<p align="center">
+  <img src="./src/assets/readme/trello.png" width="90%"  />
 </p>
 
 ## Architecture:
