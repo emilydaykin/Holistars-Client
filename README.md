@@ -51,7 +51,7 @@ This project was created by Emily Daykin and Marco Manunta in the span of around
 
 ## Tech Stack
 ### Front End
-- React.js Framework (Single Page Application)
+- Reactjs Framework (Single Page Application)
 - Redux
 - API Handling: Axios
 - Pure CSS with Sass
@@ -105,9 +105,9 @@ This project was created by Emily Daykin and Marco Manunta in the span of around
 ## Architecture:
 ### Front End: 
 - React Components to compartmentalise code
-- Redux-Toolkit to manage state across the entire application
+- Redux to manage state across the entire application
 - React Hooks for component state management and handling side effects
-- SASS and Block-Element-Modifier (BEM) methodology
+- Pure CSS (SASS) and agreed upon Block-Element-Modifier (BEM) methodology
 - Single Page Application (`react-router-dom`) using `Link`, `useNavigate`, `useLocation` and `useParams`
 ### Back End:
 - 5 tables/models in PostgreSQL, only one-to-many relationships 
