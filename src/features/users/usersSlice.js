@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import api from '../../api/users_api';
 import axios from 'axios';
 
 const USERS_URL = `${process.env.REACT_APP_API_URL}/authentication`;
