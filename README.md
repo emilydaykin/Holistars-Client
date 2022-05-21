@@ -10,16 +10,16 @@ This project was created by [Emily Daykin](https://github.com/emilydaykin) and m
 ### Home Page (Unauthenticated = Welcome Page; Authenticated = News Feed)
 
 <p align="center">
-  <img src="./src/assets/readme/home_welcome.gif" width="49%"  />
-  <img src="./src/assets/readme/home_feed.gif" width="48.5%"  />
+  <img src="./src/assets/readme/home_welcome.gif" width="48%"  />
+  <img src="./src/assets/readme/home_feed.gif" width="47.5%"  />
 </p>
 
 ### About, Login & Register Pages
 
 <p align="center">
-  <img src="./src/assets/readme/about.gif" width="49%"  />
-  <img src="./src/assets/readme/login.png" width="22%"  />
-  <img src="./src/assets/readme/register.gif" width="22.5%"  />
+  <img src="./src/assets/readme/about.gif" width="48%"  />
+  <img src="./src/assets/readme/login.png" width="21%"  />
+  <img src="./src/assets/readme/register.gif" width="21.5%"  />
 </p>
 
 ### Destinations
