@@ -374,4 +374,6 @@ What we decided would be stretch goals: making the app fully responsive, impleme
 
 ### Key Learnings
 
-Besides all the technical features and libraries (live scraping, Redux) that we learnt on the go, working with a like minded and extremely talented developer like Emily was a real pleasure, that made working in a team a fantastic and challenging developing and learning experience.
+**Marco**: "Besides all the technical features and libraries (live scraping, Redux) that we learnt on the go, working with a like minded and extremely talented developer like Emily was a real pleasure, that made working in a team a fantastic and challenging developing and learning experience."
+
+**Emily**: "Planning and creating this application as a team was incredibly fun. On top of the technical learnings mentioned, it was great experience to collaborate with and learn from a brilliant developer like Marco in this project. What we achieved together and how we helped unblock each other (thank you Marco!) definitely showed how the whole can be greater than the sum of its parts."
