@@ -10,16 +10,16 @@ This project was created by [Emily Daykin](https://github.com/emilydaykin) and m
 ### Home Page (Unauthenticated = Welcome Page; Authenticated = News Feed)
 
 <p align="center">
-  <img src="./src/assets/readme/home_welcome.gif" width="49.5%"  />
-  <img src="./src/assets/readme/home_feed.gif" width="49%"  />
+  <img src="./src/assets/readme/home_welcome.gif" width="49%"  />
+  <img src="./src/assets/readme/home_feed.gif" width="48.5%"  />
 </p>
 
 ### About, Login & Register Pages
 
 <p align="center">
-  <img src="./src/assets/readme/about.gif" width="50%"  />
-  <img src="./src/assets/readme/login.png" width="23%"  />
-  <img src="./src/assets/readme/register.gif" width="23.5%"  />
+  <img src="./src/assets/readme/about.gif" width="49%"  />
+  <img src="./src/assets/readme/login.png" width="22%"  />
+  <img src="./src/assets/readme/register.gif" width="22.5%"  />
 </p>
 
 ### Destinations
@@ -120,9 +120,10 @@ This project was created by [Emily Daykin](https://github.com/emilydaykin) and m
 
 We agreed on some conventions, like using one to many relationships only for the database, using the BEM methodology for our CSS classes, the 7-1 folder structure for Sass modules, and the async/await syntax for asynchronous functions (I generally prefer using then/catch), and decided to work on both the backend and the frontend by assigning each features to complete front to back. The work was split as such:
 
-Emily: implementing the live scraping search, cities section, holidays sections, and the connections between users
+#### Author Contributions:
+Emily: Implementing the live scraping search, cities section, holidays sections, and the connections (followings) between users
 
-Marco: implementing Redux, authentication, users sections, reviews section and component
+Marco: Implementing Redux, authentication, users sections, reviews section and the stars component
 
 ## Architecture:
 
@@ -282,8 +283,8 @@ User = get_user_model()
 
 class Follower(models.Model):
     """ Followers table:
-            - user = the person being followed (target)
-            - follower = the user following the user
+          - user = the person being followed (target)
+          - follower = the user following the user
     """
     user = models.ForeignKey(User, related_name='followers',
                              on_delete=models.SET_NULL, null=True)
@@ -340,7 +341,7 @@ def search_lonely_planet(city_name, country_name):
         return cities_urls_to_scrape
 ```
 
-Since we had to calculate the average of the reviews ratings for every city, and in turn every review rating is the average of three ratings (food, weather and culture) I used the `@property` decorator in the Review model, that allows to access computed values as properties, so that in the frontend we wouldn’t have to use a nested loop (_the horror… the horror…_) in the reducer function that calculates the average rating of the reviews for a city (Marco)
+Since we had to calculate the average of the reviews' ratings for every city, and in turn every review rating is the average of three ratings (food, weather and culture), I used the **`@property` decorator in the Review model**, that allows access to computed values as properties, so that in the frontend we wouldn’t have to use a nested loop (_the horror… the horror…_) in the reducer function that calculates the average rating of the reviews for a city (Marco)
 
 ```
 @property
